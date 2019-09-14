@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HubLibrary", "HubLibrary\HubLibrary.csproj", "{07F18DA1-9F2E-4BFA-A466-3308B28A90EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PHDataManager", "PHDataManager\PHDataManager.csproj", "{63673F17-B561-41E0-A00D-774AE7B77F74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07F18DA1-9F2E-4BFA-A466-3308B28A90EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07F18DA1-9F2E-4BFA-A466-3308B28A90EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07F18DA1-9F2E-4BFA-A466-3308B28A90EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07F18DA1-9F2E-4BFA-A466-3308B28A90EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63673F17-B561-41E0-A00D-774AE7B77F74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63673F17-B561-41E0-A00D-774AE7B77F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63673F17-B561-41E0-A00D-774AE7B77F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63673F17-B561-41E0-A00D-774AE7B77F74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CB925FB1-3F93-4668-A003-87D850709339}
+	EndGlobalSection
+EndGlobal
