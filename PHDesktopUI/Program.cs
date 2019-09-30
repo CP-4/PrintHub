@@ -10,6 +10,22 @@ namespace PHDesktopUI
 {
     static class Program
     {
+
+        public static int isPause { get; set; }
+        public static int IsPause
+        {
+            get { return isPause; }
+            set
+            {
+                isPause = value;
+                if (isPause == 1)
+                {
+                    // DO SOMETHING HERE
+                }
+            }
+        }
+
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -18,12 +34,13 @@ namespace PHDesktopUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            ApiHelper.InitializeClient();
 
+            //Thread threadPrintJobProcessor = new Thread(PrintJobProcessor.PrintJobThread);
+            //threadPrintJobProcessor.Start();
 
-            Thread thr = new Thread(PrintJobProcessor.PrintJobThread);
-            thr.Start();
-
-
+            //Thread threadDeliveryJobProcessor = new Thread(DeliveryJobProcessor.DeliveryJobThread);
+            //threadDeliveryJobProcessor.Start();
 
             Application.Run(new PrintHubForm());
         }

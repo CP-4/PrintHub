@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HubLibrary;
+using HubLibrary.Model;
 
 namespace PHDesktopUI
 {
@@ -15,6 +17,9 @@ namespace PHDesktopUI
         public PrintHubForm()
         {
             InitializeComponent();
+
+            Queue < PrintJobModel > deliveryJobQueue = await DeliveryJobProcessor.GetDeliveryJobs();
+            
         }
 
         private void PrintHub_Load(object sender, EventArgs e)

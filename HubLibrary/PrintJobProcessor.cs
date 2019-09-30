@@ -15,7 +15,7 @@ namespace HubLibrary
     {
         public static async Task<Queue<PrintJobModel>> LoadPrintJobs()
         {
-            string url = "http://127.0.0.1:8000/file2/files/";
+            string url = "http://127.0.0.1:8000/file2/shop/getprintjobs";
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
             {
@@ -42,11 +42,12 @@ namespace HubLibrary
                 {
                     var documentByte = response.Content.ReadAsByteArrayAsync().Result;
 
-                    //Debug.WriteLine("Content Type: " + response.Content.GetType());
-                    //Debug.WriteLine("Document Type: " + documentByte.GetType());
+                    Debug.WriteLine("Content Type: " + response.Content.GetType());
+                    Debug.WriteLine("Document Type: " + documentByte.GetType());
 
                     string tempDocumentPath = @"I:\pc app\PrintHub\tmp_document\tempdoc.docx";
 
+                    File.Delete(tempDocumentPath);
                     using (Stream file = File.OpenWrite(tempDocumentPath))
                     {
                         file.Write(documentByte, 0, documentByte.Length);
@@ -63,7 +64,7 @@ namespace HubLibrary
 
         public static async Task<PrintJobModel> UpdatePrintJobStatus(int id)
         {
-            string url = "http://127.0.0.1:8000/file2/files/updateprintstatus/" + $"{ id }";
+            string url = "http://127.0.0.1:8000/file2/shop/printjobdone/" + $"{ id }";
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
             {
@@ -82,32 +83,45 @@ namespace HubLibrary
 
         public static async void PrintJobThread()
         {
-            ApiHelper.InitializeClient();
             Microsoft.Office.Interop.Word.Application word = new Microsoft.Office.Interop.Word.Application { Visible = false };
             Microsoft.Office.Interop.Word.Document document;
 
-            Queue<PrintJobModel> printJobsQueue = await LoadPrintJobs();
+            Queue<PrintJobModel> printJobQueue = await LoadPrintJobs();
             PrintJobModel printJob;
 
+            int printCount = 0;
 
             while (true)
             {
-                printJobsQueue = await LoadPrintJobs();
+                printJobQueue = await LoadPrintJobs();
 
-                while (printJobsQueue.Count != 0)
+                while (printJobQueue.Count != 0)
                 {
-                    printJob = printJobsQueue.Dequeue();
+                    Debug.WriteLine("Printing One File");
 
-                    //string url = "http://127.0.0.1:8000/media/documents/2019/09/22/print.docx";
+                    //string url = "http://127.0.0.1:8000/media/documents/2019/09/22/print_VioYlRI.docx";
+                    //string url = "http://127.0.0.1:8000/media/documents/2019/09/22/DE_Report_3.docx";
 
+                    //string tempDocumentPath = await GetDocument(url);
+
+                    printJob = printJobQueue.Dequeue();
                     string tempDocumentPath = await GetDocument(printJob.docfile);
 
+                    try
+                    {
+                        document = word.Documents.Open(FileName: tempDocumentPath);
+                        //document.PrintOut();
+                        document.Close();
+                        File.Delete(tempDocumentPath);
+                        Debug.WriteLine(printCount++);
 
-                    document = word.Documents.Open(FileName: tempDocumentPath);
-                    document.PrintOut();
-                    document.Close();
-
-                    await UpdatePrintJobStatus(printJob.id);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("{0} Exception caught.", e);
+                        word.Quit();
+                    }
+                        //await UpdatePrintJobStatus(printJob.id);
                 }
             }
                 

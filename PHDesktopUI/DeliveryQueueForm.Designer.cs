@@ -35,6 +35,7 @@
             this.labelTokenId = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.buttonRefreshDeliveryJob = new System.Windows.Forms.Button();
             this.tableLayoutDeliveryQueue.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -125,11 +126,22 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "label2";
             // 
+            // buttonRefreshDeliveryJob
+            // 
+            this.buttonRefreshDeliveryJob.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.buttonRefreshDeliveryJob.Location = new System.Drawing.Point(397, 13);
+            this.buttonRefreshDeliveryJob.Name = "buttonRefreshDeliveryJob";
+            this.buttonRefreshDeliveryJob.Size = new System.Drawing.Size(75, 23);
+            this.buttonRefreshDeliveryJob.TabIndex = 3;
+            this.buttonRefreshDeliveryJob.Text = "Refresh";
+            this.buttonRefreshDeliveryJob.UseVisualStyleBackColor = true;
+            // 
             // PrintHubForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(488, 536);
+            this.Controls.Add(this.buttonRefreshDeliveryJob);
             this.Controls.Add(this.tableLayoutDeliveryQueue);
             this.Controls.Add(this.headerLabel);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -153,6 +165,7 @@
         private System.Windows.Forms.Label labelTokenId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button buttonRefreshDeliveryJob;
     }
 }
 
