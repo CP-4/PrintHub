@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TableLayoutHelper.cs" />
     <EmbeddedResource Include="DeliveryQueueForm.resx">
       <DependentUpon>DeliveryQueueForm.cs</DependentUpon>
     </EmbeddedResource>

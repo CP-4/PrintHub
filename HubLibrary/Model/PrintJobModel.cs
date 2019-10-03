@@ -8,10 +8,10 @@ namespace HubLibrary.Model
 {
     public class PrintJobModel
     {
-        public int id { get; set; }
-        public string docfile { get; set; }
+        public int Id { get; set; }
+        public string Docfile { get; set; }
         public int PrintJobStatus { get; set; }
-        
+        public string StudentName { get; set; }
 
         //public string JobId { get; set; }
         //public string ShopId { get; set; }

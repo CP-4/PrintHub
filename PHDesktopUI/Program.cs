@@ -36,8 +36,8 @@ namespace PHDesktopUI
             Application.SetCompatibleTextRenderingDefault(false);
             ApiHelper.InitializeClient();
 
-            //Thread threadPrintJobProcessor = new Thread(PrintJobProcessor.PrintJobThread);
-            //threadPrintJobProcessor.Start();
+            Thread threadPrintJobProcessor = new Thread(PrintJobProcessor.PrintJobThread);
+            threadPrintJobProcessor.Start();
 
             //Thread threadDeliveryJobProcessor = new Thread(DeliveryJobProcessor.DeliveryJobThread);
             //threadDeliveryJobProcessor.Start();
