@@ -9,7 +9,9 @@ namespace HubLibrary
     public static class GlobalConfig
     {
 
-        public static string ApiHost = "http://192.168.43.199:8000";
+        //public static string ApiHost = "http://192.168.43.199:8000";
+        public static string ApiHost = "https://preasy-53c43.appspot.com";
+
         public static bool isPlay { get; set; }
     }
 }

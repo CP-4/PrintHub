@@ -39,9 +39,6 @@ namespace PHDesktopUI
             Thread threadPrintJobProcessor = new Thread(PrintJobProcessor.PrintJobThread);
             threadPrintJobProcessor.Start();
 
-            //Thread threadDeliveryJobProcessor = new Thread(DeliveryJobProcessor.DeliveryJobThread);
-            //threadDeliveryJobProcessor.Start();
-
             Application.Run(new PrintHubForm());
         }
     }

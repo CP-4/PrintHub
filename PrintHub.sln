@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HubLibrary", "HubLibrary\Hu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PHDesktopUI", "PHDesktopUI\PHDesktopUI.csproj", "{713D2DDD-AAA2-4BB5-97C8-526EC9A43BE5}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{67B600E2-A9C5-468D-8993-4AEBDC9A83E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,8 @@ Global
 		{713D2DDD-AAA2-4BB5-97C8-526EC9A43BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{713D2DDD-AAA2-4BB5-97C8-526EC9A43BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{713D2DDD-AAA2-4BB5-97C8-526EC9A43BE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67B600E2-A9C5-468D-8993-4AEBDC9A83E2}.Debug|Any CPU.ActiveCfg = Debug
+		{67B600E2-A9C5-468D-8993-4AEBDC9A83E2}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -120,28 +120,29 @@ namespace HubLibrary
             Microsoft.Office.Interop.Word.Application word = new Microsoft.Office.Interop.Word.Application { Visible = false };
             Microsoft.Office.Interop.Word.Document document;
 
-            
 
-            //Queue<PrintJobModel> printJobQueue = await LoadPrintJobs();
+
+            Queue<PrintJobModel> printJobQueue = await LoadPrintJobs();
             PrintJobModel printJob;
 
             int printCount = 0;
 
-            //while (true)
+            while (true)
             {
-                //printJobQueue = await LoadPrintJobs();
+                printJobQueue = await LoadPrintJobs();
 
-                //while (printJobQueue.Count != 0)
+                while (printJobQueue.Count != 0)
                 {
                     Debug.WriteLine("Printing One File");
 
                     //string url = GlobalConfig.ApiHost + "/media/documents/2019/09/22/print_VioYlRI.docx";
                     //string url = GlobalConfig.ApiHost + "/media/documents/2019/09/22/DE_Report_3.docx";
 
-                    //printJob = printJobQueue.Dequeue();
-                    //string tempDocumentPath = await GetDocument(printJob.Docfile);
+                    printJob = printJobQueue.Dequeue();
+                    string tempDocumentPath = await GetDocument(printJob.Docfile);
 
-                    string tempDocumentPath = "C:\\Users\\dell\\Desktop\\print.docx";
+                    //string tempDocumentPath = "C:\\Users\\dell\\Desktop\\print.docx";
+                    //string tempDocumentPath = @"C:\Program Files\Preasy\PrintHub\print.docx";
 
                     try
                     {
@@ -154,8 +155,11 @@ namespace HubLibrary
                         String HeaderText = "# 028 9461";
                         WdParagraphAlignment wdAlign = WdParagraphAlignment.wdAlignParagraphLeft;
                         AddFooter1(word, HeaderText, wdAlign, document);
-                        document.PrintOut();
-                        document.Close();
+                        document.PrintOut(OutputFileName: @"I:\pc app\PrintHub\tmp_document\tempdoc.docx");
+                        object saveOption = WdSaveOptions.wdDoNotSaveChanges;
+                        object originalFormat = WdOriginalFormat.wdOriginalDocumentFormat;
+                        object routeDocument = false;
+                        document.Close(ref saveOption, ref originalFormat, ref routeDocument);
                         //File.Delete(tempDocumentPath);
                         Debug.WriteLine(printCount++);
 
@@ -165,7 +169,11 @@ namespace HubLibrary
                         Console.WriteLine("{0} Exception caught.", e);
                         word.Quit();
                     }
-                        //await UpdatePrintJobStatus(printJob.id);
+                    finally
+                    {
+                        word.Quit();
+                    }
+                    await UpdatePrintJobStatus(printJob.Id);
                 }
             }
                 
