@@ -33,6 +33,7 @@
             this.labelTokenId = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonRefreshDeliveryJob = new System.Windows.Forms.Button();
+            this.buttonPrintPause = new System.Windows.Forms.Button();
             this.tableLayoutDeliveryQueue.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,11 +100,22 @@
             this.buttonRefreshDeliveryJob.UseVisualStyleBackColor = true;
             this.buttonRefreshDeliveryJob.Click += new System.EventHandler(this.buttonRefreshDeliveryJob_Click);
             // 
+            // buttonPrintPause
+            // 
+            this.buttonPrintPause.Location = new System.Drawing.Point(397, 462);
+            this.buttonPrintPause.Name = "buttonPrintPause";
+            this.buttonPrintPause.Size = new System.Drawing.Size(75, 62);
+            this.buttonPrintPause.TabIndex = 4;
+            this.buttonPrintPause.Text = "Start Printing";
+            this.buttonPrintPause.UseVisualStyleBackColor = true;
+            this.buttonPrintPause.Click += new System.EventHandler(this.buttonPrintPause_Click);
+            // 
             // PrintHubForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(488, 536);
+            this.Controls.Add(this.buttonPrintPause);
             this.Controls.Add(this.buttonRefreshDeliveryJob);
             this.Controls.Add(this.tableLayoutDeliveryQueue);
             this.Controls.Add(this.headerLabel);
@@ -126,6 +138,7 @@
         private System.Windows.Forms.Label labelTokenId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonRefreshDeliveryJob;
+        private System.Windows.Forms.Button buttonPrintPause;
     }
 }
 

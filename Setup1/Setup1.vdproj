@@ -28,6 +28,12 @@
         "Entry"
         {
         "MsmKey" = "8:_22D05C0ABE83C9A363366E1CAC4049EC"
+        "OwnerKey" = "8:_48415648D9E3D941A83B4156C11EA3B6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_22D05C0ABE83C9A363366E1CAC4049EC"
         "OwnerKey" = "8:_82F53812AFA94CEABC950E84C59CCD0C"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -39,8 +45,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_22D05C0ABE83C9A363366E1CAC4049EC"
-        "OwnerKey" = "8:_57F704DFB34E9F85AF0B87955D19F8DC"
+        "MsmKey" = "8:_48415648D9E3D941A83B4156C11EA3B6"
+        "OwnerKey" = "8:_545739F4305A4BF7A78B20E09401E6EA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -51,14 +57,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_57F704DFB34E9F85AF0B87955D19F8DC"
-        "OwnerKey" = "8:_545739F4305A4BF7A78B20E09401E6EA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_809B2BCC808A5FEB140F9D370FC88809"
-        "OwnerKey" = "8:_57F704DFB34E9F85AF0B87955D19F8DC"
+        "OwnerKey" = "8:_48415648D9E3D941A83B4156C11EA3B6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -82,7 +82,7 @@
         "Entry"
         {
         "MsmKey" = "8:_CA149CA4BDB0E13D90D1C485E3CF27AB"
-        "OwnerKey" = "8:_57F704DFB34E9F85AF0B87955D19F8DC"
+        "OwnerKey" = "8:_48415648D9E3D941A83B4156C11EA3B6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -105,14 +105,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_22D05C0ABE83C9A363366E1CAC4049EC"
+        "MsmKey" = "8:_EB41074C236F18465A6B9616B49F96CF"
+        "OwnerKey" = "8:_48415648D9E3D941A83B4156C11EA3B6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_EB41074C236F18465A6B9616B49F96CF"
         "OwnerKey" = "8:_82F53812AFA94CEABC950E84C59CCD0C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EB41074C236F18465A6B9616B49F96CF"
+        "OwnerKey" = "8:_545739F4305A4BF7A78B20E09401E6EA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -124,19 +130,37 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_57F704DFB34E9F85AF0B87955D19F8DC"
+        "OwnerKey" = "8:_48415648D9E3D941A83B4156C11EA3B6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_82F53812AFA94CEABC950E84C59CCD0C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_809B2BCC808A5FEB140F9D370FC88809"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_EB41074C236F18465A6B9616B49F96CF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_CA149CA4BDB0E13D90D1C485E3CF27AB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_22D05C0ABE83C9A363366E1CAC4049EC"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -157,6 +181,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -173,6 +213,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -253,14 +309,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_57F704DFB34E9F85AF0B87955D19F8DC"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_48415648D9E3D941A83B4156C11EA3B6"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HubLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:HubLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_57F704DFB34E9F85AF0B87955D19F8DC"
+                    "_48415648D9E3D941A83B4156C11EA3B6"
                     {
                     "Name" = "8:HubLibrary.dll"
                     "Attributes" = "3:512"
@@ -346,6 +402,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EB41074C236F18465A6B9616B49F96CF"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:PdfiumViewer, Version=2.13.0.0, Culture=neutral, PublicKeyToken=91e4789cfb0609e0, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_EB41074C236F18465A6B9616B49F96CF"
+                    {
+                    "Name" = "8:PdfiumViewer.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:PdfiumViewer.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_1F1DB90920E04E9D87C551A2E1AA327F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -354,7 +441,7 @@
         {
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_1F1DB90920E04E9D87C551A2E1AA327F"
             {
-            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -403,7 +490,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PrintHub"
         "ProductCode" = "8:{7F18BEDA-7BB1-4213-98D4-F4BC7F1C6493}"
-        "PackageCode" = "8:{61A058A0-832C-4F59-A100-D0A4ED9FC401}"
+        "PackageCode" = "8:{9E105DFD-FC39-4515-83BD-B98094B96BBB}"
         "UpgradeCode" = "8:{B8C8BE81-D20E-4056-B511-6F00AC3797CE}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -424,7 +511,7 @@
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
-        "TargetPlatform" = "3:1"
+        "TargetPlatform" = "3:0"
         "PreBuildEvent" = "8:"
         "PostBuildEvent" = "8:"
         "RunPostBuildEvent" = "3:0"
@@ -938,7 +1025,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_545739F4305A4BF7A78B20E09401E6EA"
             {
-            "SourcePath" = "8:..\\PHDesktopUI\\obj\\Debug\\PHDesktopUI.exe"
+            "SourcePath" = "8:..\\PHDesktopUI\\obj\\x86\\Release\\PHDesktopUI.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1F1DB90920E04E9D87C551A2E1AA327F"
@@ -966,7 +1053,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_82F53812AFA94CEABC950E84C59CCD0C"
             {
-            "SourcePath" = "8:..\\HubLibrary\\obj\\Debug\\HubLibrary.dll"
+            "SourcePath" = "8:..\\HubLibrary\\obj\\x86\\Release\\HubLibrary.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1F1DB90920E04E9D87C551A2E1AA327F"

@@ -118,7 +118,7 @@ namespace PHDesktopUI
             }
             catch (WebException ex)
             {
-
+                Debug.WriteLine(ex.Message);
             }
             
         }
@@ -168,6 +168,22 @@ namespace PHDesktopUI
         {
 
             refreshDeliveryJobQueue();
+        }
+
+        private void buttonPrintPause_Click(object sender, EventArgs e)
+        {
+            if (PrintJobProcessor.PausePrint)
+            {
+                PrintJobProcessor.PausePrint = false;
+                Thread threadPrintJobProcessor = new Thread(PrintJobProcessor.PrintJobThread);
+                threadPrintJobProcessor.Start();
+                buttonPrintPause.Text = "Stop Printing";
+            }
+            else
+            {
+                PrintJobProcessor.PausePrint = true;
+                buttonPrintPause.Text = "Start Printing";
+            }
         }
     }
 }
