@@ -18,12 +18,18 @@ namespace PHDesktopUI
 {
     public partial class PrintHubForm : Form
     {
-        private const string delivered = "Delivered";
-        private const string cancel = "X";
+        private const string textDeliveredButtom = "Delivered";
+        private const string textCancelButton = "X";
+        private const string textPrintButton = "Print";
+
         private Queue<PrintJobModel> deliveryJobQueue;
         private List<Button> deliveredButton = new List<Button>();
+        private List<Button> printButton = new List<Button>();
         private List<Button> cancleButton = new List<Button>();
         private List<DataDelivered> data = new List<DataDelivered>();
+
+        public Queue<PrintJobModel> PrintJobQueue = new Queue<PrintJobModel>();
+
 
         public class DataDelivered
         {
@@ -37,6 +43,7 @@ namespace PHDesktopUI
             }         
         }
 
+
         public PrintHubForm()
         {
             InitializeComponent();
@@ -49,9 +56,18 @@ namespace PHDesktopUI
             //    refreshDeliveryJobQueue();
             //}, null, startTimeSpan, periodTimeSpan);
 
-            refreshDeliveryJobQueue();
+            //var progressIndicator = new Progress<Queue<PrintJobModel>>(refreshPrintJobQueue);
+            //PrintJobProcessor.PrintJobThread(progressIndicator);
 
+            var progressIndicator = new Progress<Queue<PrintJobModel>>(RefreshPrintJobQueue);
+
+            Task.Factory.StartNew(() => PrintJobProcessor.PrintJobThread(progressIndicator), TaskCreationOptions.LongRunning);
+
+
+            refreshDeliveryJobQueue();
+            //refreshPrintJobQueue(PrintJobQueue);
         }
+        
 
         private void populateDeliveryQueue(Queue<PrintJobModel> deliveryJobQueue)
         {
@@ -64,10 +80,10 @@ namespace PHDesktopUI
 
                 data.Add(new DataDelivered(deliveryJob, tableLayoutDeliveryQueue.RowCount - 1));
 
-                deliveredButton.Add(new Button() { Text = delivered, Tag = data.Last() });
+                deliveredButton.Add(new Button() { Text = textDeliveredButtom, Tag = data.Last() });
                 deliveredButton.Last().Click += new EventHandler (setDelivered);
 
-                cancleButton.Add(new Button() { Text = cancel, Tag = data.Last() });
+                cancleButton.Add(new Button() { Text = textCancelButton, Tag = data.Last() });
                 cancleButton.Last().Click += new EventHandler (cancelDelivery);
                 
                 
@@ -132,11 +148,87 @@ namespace PHDesktopUI
         private async void refreshDeliveryJobQueue()
         {
 
-            TableLayoutHelper.ClearTable(tableLayoutDeliveryQueue);
-            
             deliveryJobQueue = await DeliveryJobProcessor.GetDeliveryJobs();
+            
+            TableLayoutHelper.ClearTable(tableLayoutDeliveryQueue);
 
             populateDeliveryQueue(deliveryJobQueue);
+        }
+
+        public Queue<PrintJobModel> GetPrintJobs()
+        {
+            return PrintJobProcessor.printJobQueue;
+        }
+
+        private async void manualPrintFile(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            DataDelivered data = (DataDelivered)button.Tag;
+            var progressIndicator = new Progress<Queue<PrintJobModel>>(RefreshPrintJobQueue);
+
+            try
+            {
+                // TODO: Check if Application is running in manual mode
+                // if in manual mode:
+                //  print selected file
+                //  update printjobstatus
+                //  update tablelayout
+                // else:
+                //  Switch to Manual mode
+                //  follow the steps for manual mode
+                //  switch to automatic mode
+
+                if (PrintJobProcessor.PausePrint)
+                {
+                    Task.Factory.StartNew(() => PrintJobProcessor.PrintOneFile(data.Job, progressIndicator), TaskCreationOptions.LongRunning);
+                }
+
+                TableLayoutHelper.RemoveArbitraryRow(tableLayoutPrintQueue, data.RowIndex);
+            }
+            catch (WebException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+
+        }
+
+        private void populatePrintQueue(Queue<PrintJobModel> printJobQueue)
+        {
+            PrintJobModel printJob;
+
+            while (printJobQueue.Count != 0)
+            {
+                printJob = printJobQueue.Dequeue();
+                tableLayoutPrintQueue.RowCount += 1;
+
+                data.Add(new DataDelivered(printJob, tableLayoutPrintQueue.RowCount - 1));
+
+                printButton.Add(new Button() { Text = textPrintButton, Tag = data.Last() });
+                printButton.Last().Click += new EventHandler(manualPrintFile);
+
+                //cancleButton.Add(new Button() { Text = cancel, Tag = data.Last() });
+                //cancleButton.Last().Click += new EventHandler(cancelDelivery);
+
+
+                tableLayoutPrintQueue.Controls.Add(new Label() { Text = printJob.Id.ToString() }, 0, tableLayoutPrintQueue.RowCount - 1);
+                tableLayoutPrintQueue.Controls.Add(new Label() { Text = GetName(printJob.Docfile) }, 1, tableLayoutPrintQueue.RowCount - 1);
+                tableLayoutPrintQueue.Controls.Add(printButton.Last(), 2, tableLayoutPrintQueue.RowCount - 1);
+                //tableLayoutPrintQueue.Controls.Add(cancleButton.Last(), 3, tableLayoutPrintQueue.RowCount - 1);
+
+            }
+
+        }
+
+        private async void RefreshPrintJobQueue(Queue<PrintJobModel> printJobQueue)
+        {
+            //PrintJobQueue = GetPrintJobs();
+
+            // TODO: Remove this server call and use formal parameter
+            printJobQueue = await PrintJobProcessor.LoadPrintJobs();
+
+            TableLayoutHelper.ClearTable(tableLayoutPrintQueue);
+
+            populatePrintQueue(printJobQueue);
         }
 
         private void PrintHub_Load(object sender, EventArgs e)
@@ -170,13 +262,11 @@ namespace PHDesktopUI
             refreshDeliveryJobQueue();
         }
 
-        private void buttonPrintPause_Click(object sender, EventArgs e)
+        private async void buttonPrintPause_Click(object sender, EventArgs e)
         {
             if (PrintJobProcessor.PausePrint)
             {
                 PrintJobProcessor.PausePrint = false;
-                Thread threadPrintJobProcessor = new Thread(PrintJobProcessor.PrintJobThread);
-                threadPrintJobProcessor.Start();
                 buttonPrintPause.Text = "Stop Printing";
             }
             else
@@ -185,5 +275,6 @@ namespace PHDesktopUI
                 buttonPrintPause.Text = "Start Printing";
             }
         }
+
     }
 }

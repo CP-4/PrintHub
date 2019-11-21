@@ -32,14 +32,29 @@ namespace PHDesktopUI
         [STAThread]
         static void Main()
         {
+
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             ApiHelper.InitializeClient();
+
+            GlobalConfig.ApiHost = Properties.Settings.Default.serverAddress;
+
+            Application.ApplicationExit += new EventHandler(OnApplicationExit);
 
             //Thread threadPrintJobProcessor = new Thread(PrintJobProcessor.PrintJobThread);
             //threadPrintJobProcessor.Start();
 
             Application.Run(new PrintHubForm());
+        }
+
+        private static void OnApplicationExit(object sender, EventArgs e)
+        {
+            try
+            {
+                PrintDocumentHelper.QuitWord();
+            }
+            catch { }
         }
     }
 }

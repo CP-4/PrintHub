@@ -9,13 +9,13 @@ using Microsoft.Office.Interop.Word;
 using System.Diagnostics;
 using PdfiumViewer;
 using HubLibrary.Model;
+using System.Windows;
 
 namespace HubLibrary
 {
     public static class PrintDocumentHelper
     {
-        static Microsoft.Office.Interop.Word.Application word = new Microsoft.Office.Interop.Word.Application { Visible = false };
-        static Microsoft.Office.Interop.Word.Document document;
+        public static Microsoft.Office.Interop.Word.Application word = new Microsoft.Office.Interop.Word.Application { Visible = false };
 
 
         //private static void AddHeader1(Application WordApp, string HeaderText, WdParagraphAlignment wdAlign)
@@ -50,10 +50,19 @@ namespace HubLibrary
             WordApp.ActiveWindow.View.SeekView = WdSeekView.wdSeekMainDocument;
         }
 
+        public static void QuitWord()
+        {
+            word.Quit();
+        }
+
         public static void PrintWord(string docPath, PrintJobModel printJob)
         {
             try
             {
+                Microsoft.Office.Interop.Word.Document document;
+
+                //System.Windows.Forms.MessageBox.Show("Just before word.Document.Open");
+
                 document = word.Documents.Open(FileName: docPath);
                 
                 Debug.WriteLine(document.ActiveWindow.Selection.PageSetup.PageHeight);
@@ -62,6 +71,9 @@ namespace HubLibrary
                 String HeaderText = "# " + printJob.Id.ToString();
                 WdParagraphAlignment wdAlign = WdParagraphAlignment.wdAlignParagraphLeft;
                 AddFooterWord(word, HeaderText, wdAlign, document);
+
+                //System.Windows.Forms.MessageBox.Show("Just before word.Document.PrintOut()");
+
                 document.PrintOut();
                 object saveOption = WdSaveOptions.wdDoNotSaveChanges;
                 object originalFormat = WdOriginalFormat.wdOriginalDocumentFormat;
@@ -86,17 +98,23 @@ namespace HubLibrary
             try
             {
                 // Now print the PDF document
+                //System.Windows.Forms.MessageBox.Show("Just before PdfDocument.Load()");
                 using (var document = PdfDocument.Load(docPath))
                 {
+                    //System.Windows.Forms.MessageBox.Show("Just after PrintWord");
                     using (var printDocument = document.CreatePrintDocument())
                     {
+                        
                         printDocument.PrintController = new StandardPrintController();
+                        //System.Windows.Forms.MessageBox.Show("Just before printPdf.Print()");
                         printDocument.Print();
+                        //System.Windows.Forms.MessageBox.Show("Just after printPdf.Print()");
                     }
                 }
             }
             catch (Exception e)
             {
+                System.Windows.Forms.MessageBox.Show(e.Message);
                 Debug.WriteLine(e.Message);
             }
         }
@@ -104,19 +122,24 @@ namespace HubLibrary
 
         public static void PrintDocument(string docPath, PrintJobModel printJob)
         {
+            System.Windows.Forms.MessageBox.Show("Printing File ID: # " + printJob.Id);
             switch (printJob.DocType)
             {
-
                 case ".doc":
                 case ".docx":
+                    //System.Windows.Forms.MessageBox.Show("Just before PrintWord");
                     PrintWord(docPath, printJob);
+                    //System.Windows.Forms.MessageBox.Show("Just after PrintWord");
                     break;
 
                 case ".pdf":
+                    //System.Windows.Forms.MessageBox.Show("Just before PrintPdf");
                     PrintPdf(docPath, printJob);
+                    //System.Windows.Forms.MessageBox.Show("Just after PrintPdf");
                     break;
 
                 default:
+                    System.Windows.Forms.MessageBox.Show("In PrintDocument switch case: Default");
                     break;
             }
         }

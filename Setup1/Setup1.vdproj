@@ -40,7 +40,7 @@
         "Entry"
         {
         "MsmKey" = "8:_22D05C0ABE83C9A363366E1CAC4049EC"
-        "OwnerKey" = "8:_809B2BCC808A5FEB140F9D370FC88809"
+        "OwnerKey" = "8:_C722754A56B5F83C69DE5018DE34D7EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -57,19 +57,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_809B2BCC808A5FEB140F9D370FC88809"
+        "MsmKey" = "8:_6FCC43D9118D2B0BAD7F77FAEA4E091A"
         "OwnerKey" = "8:_48415648D9E3D941A83B4156C11EA3B6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_809B2BCC808A5FEB140F9D370FC88809"
+        "MsmKey" = "8:_6FCC43D9118D2B0BAD7F77FAEA4E091A"
         "OwnerKey" = "8:_82F53812AFA94CEABC950E84C59CCD0C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_809B2BCC808A5FEB140F9D370FC88809"
+        "MsmKey" = "8:_6FCC43D9118D2B0BAD7F77FAEA4E091A"
         "OwnerKey" = "8:_545739F4305A4BF7A78B20E09401E6EA"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -81,44 +81,50 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CA149CA4BDB0E13D90D1C485E3CF27AB"
+        "MsmKey" = "8:_A52B8CF6E6726E67538DDF28FD733CA2"
         "OwnerKey" = "8:_48415648D9E3D941A83B4156C11EA3B6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_CA149CA4BDB0E13D90D1C485E3CF27AB"
+        "MsmKey" = "8:_A52B8CF6E6726E67538DDF28FD733CA2"
         "OwnerKey" = "8:_82F53812AFA94CEABC950E84C59CCD0C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_CA149CA4BDB0E13D90D1C485E3CF27AB"
+        "MsmKey" = "8:_A52B8CF6E6726E67538DDF28FD733CA2"
         "OwnerKey" = "8:_545739F4305A4BF7A78B20E09401E6EA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_CA149CA4BDB0E13D90D1C485E3CF27AB"
-        "OwnerKey" = "8:_809B2BCC808A5FEB140F9D370FC88809"
+        "MsmKey" = "8:_A52B8CF6E6726E67538DDF28FD733CA2"
+        "OwnerKey" = "8:_C722754A56B5F83C69DE5018DE34D7EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_EB41074C236F18465A6B9616B49F96CF"
+        "MsmKey" = "8:_C722754A56B5F83C69DE5018DE34D7EC"
         "OwnerKey" = "8:_48415648D9E3D941A83B4156C11EA3B6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_EB41074C236F18465A6B9616B49F96CF"
+        "MsmKey" = "8:_C722754A56B5F83C69DE5018DE34D7EC"
         "OwnerKey" = "8:_82F53812AFA94CEABC950E84C59CCD0C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_EB41074C236F18465A6B9616B49F96CF"
+        "MsmKey" = "8:_C722754A56B5F83C69DE5018DE34D7EC"
         "OwnerKey" = "8:_545739F4305A4BF7A78B20E09401E6EA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E3CA9223F32248F6809731537993CDCC"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -142,19 +148,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_809B2BCC808A5FEB140F9D370FC88809"
+        "OwnerKey" = "8:_C722754A56B5F83C69DE5018DE34D7EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EB41074C236F18465A6B9616B49F96CF"
+        "OwnerKey" = "8:_6FCC43D9118D2B0BAD7F77FAEA4E091A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CA149CA4BDB0E13D90D1C485E3CF27AB"
+        "OwnerKey" = "8:_A52B8CF6E6726E67538DDF28FD733CA2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -340,76 +346,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_809B2BCC808A5FEB140F9D370FC88809"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_809B2BCC808A5FEB140F9D370FC88809"
-                    {
-                    "Name" = "8:System.Net.Http.Formatting.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:System.Net.Http.Formatting.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_1F1DB90920E04E9D87C551A2E1AA327F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CA149CA4BDB0E13D90D1C485E3CF27AB"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_CA149CA4BDB0E13D90D1C485E3CF27AB"
-                    {
-                    "Name" = "8:Newtonsoft.Json.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Newtonsoft.Json.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_1F1DB90920E04E9D87C551A2E1AA327F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EB41074C236F18465A6B9616B49F96CF"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6FCC43D9118D2B0BAD7F77FAEA4E091A"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:PdfiumViewer, Version=2.13.0.0, Culture=neutral, PublicKeyToken=91e4789cfb0609e0, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_EB41074C236F18465A6B9616B49F96CF"
+                    "_6FCC43D9118D2B0BAD7F77FAEA4E091A"
                     {
                     "Name" = "8:PdfiumViewer.dll"
                     "Attributes" = "3:512"
@@ -433,6 +377,88 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A52B8CF6E6726E67538DDF28FD733CA2"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_A52B8CF6E6726E67538DDF28FD733CA2"
+                    {
+                    "Name" = "8:Newtonsoft.Json.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Newtonsoft.Json.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_1F1DB90920E04E9D87C551A2E1AA327F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C722754A56B5F83C69DE5018DE34D7EC"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_C722754A56B5F83C69DE5018DE34D7EC"
+                    {
+                    "Name" = "8:System.Net.Http.Formatting.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Net.Http.Formatting.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_1F1DB90920E04E9D87C551A2E1AA327F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E3CA9223F32248F6809731537993CDCC"
+            {
+            "SourcePath" = "8:..\\PHDesktopUI\\bin\\x86\\Release\\x86\\pdfium.dll"
+            "TargetName" = "8:pdfium.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_1766094D41ED4E3B9B32302587566AA4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -449,6 +475,28 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_1766094D41ED4E3B9B32302587566AA4"
+                    {
+                    "Name" = "8:x86"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_69D1D25F70684A8C9DCA25DA85093372"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_E42D0E1C9458492FA01E365BC5A3C062"
+                    {
+                    "Name" = "8:tmp_document"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_DA047F6D0D0E49A7B2DAF92D52725732"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_66355910AD294EEB83D6DF47BD838FAD"
@@ -490,7 +538,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PrintHub"
         "ProductCode" = "8:{7F18BEDA-7BB1-4213-98D4-F4BC7F1C6493}"
-        "PackageCode" = "8:{9E105DFD-FC39-4515-83BD-B98094B96BBB}"
+        "PackageCode" = "8:{1B9531F8-8DD4-4338-BE5F-B0E9B1256BC3}"
         "UpgradeCode" = "8:{B8C8BE81-D20E-4056-B511-6F00AC3797CE}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -612,7 +660,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8BC4E8989137429CA91CCA24C60442DF"
             {
-            "Name" = "8:Test PrintHub"
+            "Name" = "8:PrintHub"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -1053,7 +1101,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_82F53812AFA94CEABC950E84C59CCD0C"
             {
-            "SourcePath" = "8:..\\HubLibrary\\obj\\x86\\Release\\HubLibrary.dll"
+            "SourcePath" = "8:..\\HubLibrary\\obj\\x86\\Debug\\HubLibrary.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1F1DB90920E04E9D87C551A2E1AA327F"

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using HubLibrary.Model;
 using System.Diagnostics;
 using PdfiumViewer;
-
+using System.Windows.Forms;
 
 namespace HubLibrary
 {
@@ -17,7 +17,8 @@ namespace HubLibrary
 
         public static bool PausePrint = true;
         public static bool GetPrintJobs = true;
-
+        public static int OngoingPrintJobRequests = 0;
+        public static Queue<PrintJobModel> printJobQueue = new Queue<PrintJobModel>();
 
         public static async Task<Queue<PrintJobModel>> LoadPrintJobs()
         {
@@ -52,15 +53,35 @@ namespace HubLibrary
                     Debug.WriteLine("Content Type: " + response.Content.GetType());
                     Debug.WriteLine("Document Type: " + documentByte.GetType());
 
-                    string tempDocumentPath = @"I:\pc app\PrintHub\tmp_document\tempdoc" + documentType;
+                    //string tempDocumentPath = @"I:\pc app\PrintHub\tmp_document\tempdoc" + documentType;
+                    string tempDir = @"C:\ProgramData\Preasy\";
+                    string tempDocumentPath = tempDir + @"tempdoc" + documentType;
 
-                    File.Delete(tempDocumentPath);
-                    using (Stream file = File.OpenWrite(tempDocumentPath))
+                    System.IO.Directory.CreateDirectory(tempDir);
+
+                    try
                     {
-                        file.Write(documentByte, 0, documentByte.Length);
+                        File.Delete(tempDocumentPath);
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e.Message);
                     }
 
-                    return tempDocumentPath;
+                    try
+                    {
+                        using (Stream file = File.OpenWrite(tempDocumentPath))
+                        {
+                            file.Write(documentByte, 0, documentByte.Length);
+                        }
+
+                        return tempDocumentPath;
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e.Message);
+                        return "Some exception occured while writing file to drive";
+                    }
                 }
                 else
                 {
@@ -90,60 +111,108 @@ namespace HubLibrary
         }
 
 
-        public static async void PrintJobThread()
+        public static async Task PrintJobThread(IProgress<Queue<PrintJobModel>> progress)
         {
 
-            Queue<PrintJobModel> printJobQueue; // = await LoadPrintJobs();
+            // = await LoadPrintJobs();
             PrintJobModel printJob;
 
             int printCount = 0;
 
-            while (!PausePrint)
+            while (true)
             {
-                printJobQueue = await LoadPrintJobs();
-                GetPrintJobs = false;
 
-                while (printJobQueue.Count != 0)
+                if (!PausePrint)
                 {
-                    Debug.WriteLine("Printing One File");
-
-                    //string url = GlobalConfig.ApiHost + "/media/documents/2019/09/22/print_VioYlRI.docx";
-
-                    printJob = printJobQueue.Dequeue();
-                    string tempDocumentPath = await GetDocument(printJob.Docfile, printJob.DocType);
-
-                    //string tempDocumentPath = @"C:\Program Files\Preasy\PrintHub\print.docx";
-
-                    try
+                    printJobQueue = await LoadPrintJobs();
+                    // TODO: Implement an Hacky AF solution here as well.
+                    progress.Report(printJobQueue);
+                    GetPrintJobs = false;
+                    while (printJobQueue.Count != 0)
                     {
-                        PrintDocumentHelper.PrintDocument(tempDocumentPath, printJob);
-                        Debug.WriteLine(printCount++);
 
-                        await UpdatePrintJobStatus(printJob.Id);
+                        printJob = printJobQueue.Dequeue();
 
-                        if (PausePrint)
+                        progress.Report(printJobQueue);
+                        string tempDocumentPath = await GetDocument(printJob.Docfile, printJob.DocType);
+                        
+                        //string tempDocumentPath = @"C:\Program Files\Preasy\PrintHub\print.docx";
+
+                        try
                         {
-                            break;
+                            //MessageBox.Show("Just before PrintDocument");
+                            PrintDocumentHelper.PrintDocument(tempDocumentPath, printJob);
+                            //MessageBox.Show("Just exited PrintDocument");
+                            Debug.WriteLine(printCount++);
+
+                            await UpdatePrintJobStatus(printJob.Id);
+
+                            if (PausePrint)
+                            {
+                                break;
+                            }
                         }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show(e.Message);
+                            Debug.WriteLine(e.Message);
+                        }
+
+                        //System.Threading.Thread.Sleep(10000);
+                        GetPrintJobs = true;
                     }
-                    catch
+                    // Automatic Operation Mode
+                    if (!GetPrintJobs)
                     {
-
+                        System.Threading.Thread.Sleep(10000);
+                    }
+                }
+                else
+                {
+                    // Manual Opernation Mode.
+                    printJobQueue = await LoadPrintJobs();
+                    // TODO: Implement an Hacky AF solution here as well.
+                    if (OngoingPrintJobRequests == 0)
+                    {
+                        progress.Report(printJobQueue);
                     }
 
-                    GetPrintJobs = true;
-                }
-
-                if (PausePrint)
-                {
-                    break;
-                }
-
-                if (!GetPrintJobs)
-                {
                     System.Threading.Thread.Sleep(10000);
                 }
+
             }
         }
+
+        public static async Task PrintOneFile(PrintJobModel printJob, IProgress<Queue<PrintJobModel>> progress)
+        {
+            OngoingPrintJobRequests += 1;
+            string tempDocumentPath = await GetDocument(printJob.Docfile, printJob.DocType);
+
+            try
+            {
+
+                PrintDocumentHelper.PrintDocument(tempDocumentPath, printJob);
+
+                //await UpdatePrintJobStatus(printJob.Id);
+
+                OngoingPrintJobRequests -= 1;
+                // TODO: Hacky AF
+                //  Why:
+                //  - When printButton is used the row is removed from the printQueueTable.
+                //    However, printJobStatus for the job is not updated on backend.
+                //    So, only refresh table from backend once all ongoing jobs are finished, and the printJobStatus is updated on backend.
+                if (OngoingPrintJobRequests == 0)
+                {
+                    progress.Report(new Queue<PrintJobModel>());
+                }
+                
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                Debug.WriteLine(e.Message);
+            }
+        }
+        
     }
 }
