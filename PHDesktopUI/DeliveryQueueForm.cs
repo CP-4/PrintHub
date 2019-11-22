@@ -29,6 +29,8 @@ namespace PHDesktopUI
         private List<DataDelivered> data = new List<DataDelivered>();
 
         public Queue<PrintJobModel> PrintJobQueue = new Queue<PrintJobModel>();
+        public string StringPrintJobQueue = "";
+        public int TopPrintJobId = 0;
 
 
         public class DataDelivered
@@ -219,16 +221,39 @@ namespace PHDesktopUI
 
         }
 
+        private string printJobQueueToString(Queue<PrintJobModel> printJobQueue)
+        {
+            string toString = "";
+            
+            for (int i=0; i<printJobQueue.Count; i++)
+            {
+                toString += printJobQueue.ElementAt(i).Id.ToString() + ",";
+            }
+
+            return toString;
+        }
+
         private async void RefreshPrintJobQueue(Queue<PrintJobModel> printJobQueue)
         {
             //PrintJobQueue = GetPrintJobs();
 
             // TODO: Remove this server call and use formal parameter
             printJobQueue = await PrintJobProcessor.LoadPrintJobs();
+            //int topPrintJobId = printJobQueue.Last().Id;
+            string stringPrintJobQueue = printJobQueueToString(printJobQueue);
+            if (!string.Equals(StringPrintJobQueue, stringPrintJobQueue))
+            {
+                StringPrintJobQueue = stringPrintJobQueue;
 
-            TableLayoutHelper.ClearTable(tableLayoutPrintQueue);
-
-            populatePrintQueue(printJobQueue);
+                // Only show this message in Manual operation
+                if (PrintJobProcessor.PausePrint && PrintJobProcessor.showMessageBox)
+                {
+                    MessageBox.Show("We have a new Print Job");
+                }
+                PrintJobProcessor.showMessageBox = true;
+                TableLayoutHelper.ClearTable(tableLayoutPrintQueue);
+                populatePrintQueue(printJobQueue);
+            }
         }
 
         private void PrintHub_Load(object sender, EventArgs e)

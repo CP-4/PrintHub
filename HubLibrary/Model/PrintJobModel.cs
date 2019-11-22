@@ -11,8 +11,12 @@ namespace HubLibrary.Model
         public int Id { get; set; }
         public string Docfile { get; set; }
         public int PrintJobStatus { get; set; }
-        public string StudentName { get; set; }
+        public string Student_Name { get; set; }
         public string DocType { get; set; }
+        public string DocName { get; set; }
+        public int Pages { get; set; }
+        public string Print_Feature { get; set; }
+        public int Print_Copies { get; set; }
 
         //public string JobId { get; set; }
         //public string ShopId { get; set; }

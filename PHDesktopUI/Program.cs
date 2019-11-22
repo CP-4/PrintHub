@@ -38,7 +38,7 @@ namespace PHDesktopUI
             Application.SetCompatibleTextRenderingDefault(false);
             ApiHelper.InitializeClient();
 
-            GlobalConfig.ApiHost = Properties.Settings.Default.serverAddress;
+            //GlobalConfig.ApiHost = Properties.Settings.Default.serverAddress;
 
             Application.ApplicationExit += new EventHandler(OnApplicationExit);
 

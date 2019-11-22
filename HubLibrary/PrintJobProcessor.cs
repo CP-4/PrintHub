@@ -18,6 +18,7 @@ namespace HubLibrary
         public static bool PausePrint = true;
         public static bool GetPrintJobs = true;
         public static int OngoingPrintJobRequests = 0;
+        public static bool showMessageBox = false;
         public static Queue<PrintJobModel> printJobQueue = new Queue<PrintJobModel>();
 
         public static async Task<Queue<PrintJobModel>> LoadPrintJobs()
@@ -190,10 +191,10 @@ namespace HubLibrary
 
             try
             {
-
+                
                 PrintDocumentHelper.PrintDocument(tempDocumentPath, printJob);
 
-                //await UpdatePrintJobStatus(printJob.Id);
+                await UpdatePrintJobStatus(printJob.Id);
 
                 OngoingPrintJobRequests -= 1;
                 // TODO: Hacky AF
@@ -203,6 +204,7 @@ namespace HubLibrary
                 //    So, only refresh table from backend once all ongoing jobs are finished, and the printJobStatus is updated on backend.
                 if (OngoingPrintJobRequests == 0)
                 {
+                    showMessageBox = false;
                     progress.Report(new Queue<PrintJobModel>());
                 }
                 
