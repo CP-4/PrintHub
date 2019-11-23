@@ -11,6 +11,7 @@ using PdfiumViewer;
 using HubLibrary.Model;
 using System.Windows;
 
+
 namespace HubLibrary
 {
     public static class PrintDocumentHelper
@@ -143,6 +144,6 @@ namespace HubLibrary
                     break;
             }
         }
-
+        
     }
 }

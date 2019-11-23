@@ -70,6 +70,37 @@ namespace PHDesktopUI
             //refreshPrintJobQueue(PrintJobQueue);
         }
         
+        private async void setDelivered(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            DataDelivered data = (DataDelivered)button.Tag;
+            try
+            {
+                await DeliveryJobProcessor.SetDelivered(data.Job);
+                TableLayoutHelper.RemoveArbitraryRow(tableLayoutDeliveryQueue, data.RowIndex);
+            }
+            catch (WebException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            
+        }
+
+        private async void cancelDelivery(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            DataDelivered data = (DataDelivered)button.Tag;
+            try
+            {
+                await DeliveryJobProcessor.CancelDelivery(data.Job);
+                TableLayoutHelper.RemoveArbitraryRow(tableLayoutDeliveryQueue, data.RowIndex);
+            }
+            catch (WebException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+
 
         private void populateDeliveryQueue(Queue<PrintJobModel> deliveryJobQueue)
         {
@@ -90,55 +121,34 @@ namespace PHDesktopUI
                 
                 
                 tableLayoutDeliveryQueue.Controls.Add(new Label() { Text = deliveryJob.Id.ToString() }, 0, tableLayoutDeliveryQueue.RowCount - 1);
-                tableLayoutDeliveryQueue.Controls.Add(new Label() { Text = GetName(deliveryJob.Docfile) }, 1, tableLayoutDeliveryQueue.RowCount - 1);
-                tableLayoutDeliveryQueue.Controls.Add(deliveredButton.Last(), 2, tableLayoutDeliveryQueue.RowCount - 1);
-                tableLayoutDeliveryQueue.Controls.Add(cancleButton.Last(), 3, tableLayoutDeliveryQueue.RowCount - 1);
+                tableLayoutDeliveryQueue.Controls.Add(new Label() { Text = deliveryJob.Student_Name }, 1, tableLayoutDeliveryQueue.RowCount - 1);
+                tableLayoutDeliveryQueue.Controls.Add(new Label() { Text = deliveryJob.Pages.ToString() }, 2, tableLayoutPrintQueue.RowCount - 1);
+                tableLayoutDeliveryQueue.Controls.Add(deliveredButton.Last(), 3, tableLayoutDeliveryQueue.RowCount - 1);
+                tableLayoutDeliveryQueue.Controls.Add(cancleButton.Last(), 4, tableLayoutDeliveryQueue.RowCount - 1);
 
             }
             
         }
-
-        public string GetName(string docfile)
+        
+        private async void refreshDeliveryJobQueue()
         {
-            string[] fileName = docfile.Split('/');
+            try
+            {
+                deliveryJobQueue = await DeliveryJobProcessor.GetDeliveryJobs();
+            }
+            catch
+            {
+                MessageBox.Show("Unable to connect to Internet.");
+            }
+            
+            TableLayoutHelper.ClearTable(tableLayoutDeliveryQueue);
 
-            return fileName.Last();
+            populateDeliveryQueue(deliveryJobQueue);
         }
 
         private void PrintHubForm_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
-        }
-
-        private async void cancelDelivery(object sender, EventArgs e)
-        {
-            Button button = sender as Button;
-            DataDelivered data = (DataDelivered)button.Tag;
-            try
-            {
-                await DeliveryJobProcessor.CancelDelivery(data.Job);
-                TableLayoutHelper.RemoveArbitraryRow(tableLayoutDeliveryQueue, data.RowIndex);
-            }
-            catch (WebException ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
-        }
-
-        private async void setDelivered(object sender, EventArgs e)
-        {
-            Button button = sender as Button;
-            DataDelivered data = (DataDelivered)button.Tag;
-            try
-            {
-                await DeliveryJobProcessor.SetDelivered(data.Job);
-                TableLayoutHelper.RemoveArbitraryRow(tableLayoutDeliveryQueue, data.RowIndex);
-            }
-            catch (WebException ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
-            
         }
 
         private void addDeliveryQueue()
@@ -147,20 +157,6 @@ namespace PHDesktopUI
             tableLayoutDeliveryQueue.Controls.Add(new Label() { Text = "Street, City, State" }, 0, tableLayoutDeliveryQueue.RowCount - 1);
         }
         
-        private async void refreshDeliveryJobQueue()
-        {
-
-            deliveryJobQueue = await DeliveryJobProcessor.GetDeliveryJobs();
-            
-            TableLayoutHelper.ClearTable(tableLayoutDeliveryQueue);
-
-            populateDeliveryQueue(deliveryJobQueue);
-        }
-
-        public Queue<PrintJobModel> GetPrintJobs()
-        {
-            return PrintJobProcessor.printJobQueue;
-        }
 
         private async void manualPrintFile(object sender, EventArgs e)
         {
@@ -194,6 +190,18 @@ namespace PHDesktopUI
 
         }
 
+        private string printJobQueueToString(Queue<PrintJobModel> printJobQueue)
+        {
+            string toString = "";
+            
+            for (int i=0; i<printJobQueue.Count; i++)
+            {
+                toString += printJobQueue.ElementAt(i).Id.ToString() + ",";
+            }
+
+            return toString;
+        }
+
         private void populatePrintQueue(Queue<PrintJobModel> printJobQueue)
         {
             PrintJobModel printJob;
@@ -213,24 +221,13 @@ namespace PHDesktopUI
 
 
                 tableLayoutPrintQueue.Controls.Add(new Label() { Text = printJob.Id.ToString() }, 0, tableLayoutPrintQueue.RowCount - 1);
-                tableLayoutPrintQueue.Controls.Add(new Label() { Text = GetName(printJob.Docfile) }, 1, tableLayoutPrintQueue.RowCount - 1);
-                tableLayoutPrintQueue.Controls.Add(printButton.Last(), 2, tableLayoutPrintQueue.RowCount - 1);
+                tableLayoutPrintQueue.Controls.Add(new Label() { Text = printJob.Student_Name }, 1, tableLayoutPrintQueue.RowCount - 1);
+                tableLayoutPrintQueue.Controls.Add(new Label() { Text = printJob.Pages.ToString() }, 2, tableLayoutPrintQueue.RowCount - 1);
+                tableLayoutPrintQueue.Controls.Add(printButton.Last(), 3, tableLayoutPrintQueue.RowCount - 1);
                 //tableLayoutPrintQueue.Controls.Add(cancleButton.Last(), 3, tableLayoutPrintQueue.RowCount - 1);
 
             }
 
-        }
-
-        private string printJobQueueToString(Queue<PrintJobModel> printJobQueue)
-        {
-            string toString = "";
-            
-            for (int i=0; i<printJobQueue.Count; i++)
-            {
-                toString += printJobQueue.ElementAt(i).Id.ToString() + ",";
-            }
-
-            return toString;
         }
 
         private async void RefreshPrintJobQueue(Queue<PrintJobModel> printJobQueue)

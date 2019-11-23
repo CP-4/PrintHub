@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace HubLibrary
 {
@@ -33,9 +34,18 @@ namespace HubLibrary
         
         public static async Task<Queue<PrintJobModel>> GetDeliveryJobs()
         {
-            Queue<PrintJobModel> deliveryJobQueue = await LoadDeliveryJobs();
 
-            return deliveryJobQueue;
+            try
+            {
+                Queue<PrintJobModel> deliveryJobQueue = await LoadDeliveryJobs();
+                return deliveryJobQueue;
+            }
+            catch
+            {
+                MessageBox.Show("Unable to connect to Internet.");
+                return new Queue<PrintJobModel>();
+            }
+
             
         }
 

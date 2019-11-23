@@ -19,8 +19,9 @@ namespace PHDesktopUI
             panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             panel.Controls.Add(new Label() { Text = "ID", Font = new Font("Century Gothic", 12, FontStyle.Bold), ForeColor = Color.LightGray }, 0, panel.RowCount - 1);
             panel.Controls.Add(new Label() { Text = "NAME", Font = new Font("Century Gothic", 12, FontStyle.Bold), ForeColor = Color.LightGray }, 1, panel.RowCount - 1);
-            panel.Controls.Add(new Label() { Text = "Actions", Font = new Font("Century Gothic", 12, FontStyle.Bold), ForeColor = Color.LightGray }, 2, panel.RowCount - 1);
-            panel.Controls.Add(new Label() { Text = "", Font = new Font("Century Gothic", 12, FontStyle.Bold), ForeColor = Color.LightGray }, 3, panel.RowCount - 1);
+            panel.Controls.Add(new Label() { Text = "PAGES", Font = new Font("Century Gothic", 12, FontStyle.Bold), ForeColor = Color.LightGray }, 2, panel.RowCount - 1);
+            panel.Controls.Add(new Label() { Text = "ACTIONS", Font = new Font("Century Gothic", 12, FontStyle.Bold), ForeColor = Color.LightGray }, 3, panel.RowCount - 1);
+            panel.Controls.Add(new Label() { Text = "", Font = new Font("Century Gothic", 12, FontStyle.Bold), ForeColor = Color.LightGray }, 4, panel.RowCount - 1);
         }
 
 

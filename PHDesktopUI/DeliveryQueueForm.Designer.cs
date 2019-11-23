@@ -47,7 +47,7 @@
             this.headerLabel.AutoSize = true;
             this.headerLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.headerLabel.ForeColor = System.Drawing.Color.Black;
-            this.headerLabel.Location = new System.Drawing.Point(523, 9);
+            this.headerLabel.Location = new System.Drawing.Point(597, 9);
             this.headerLabel.Name = "headerLabel";
             this.headerLabel.Size = new System.Drawing.Size(129, 21);
             this.headerLabel.TabIndex = 0;
@@ -57,21 +57,20 @@
             // 
             this.tableLayoutDeliveryQueue.AutoSize = true;
             this.tableLayoutDeliveryQueue.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutDeliveryQueue.ColumnCount = 4;
-            this.tableLayoutDeliveryQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.07013F));
-            this.tableLayoutDeliveryQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.92987F));
-            this.tableLayoutDeliveryQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
-            this.tableLayoutDeliveryQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutDeliveryQueue.ColumnCount = 5;
+            this.tableLayoutDeliveryQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutDeliveryQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutDeliveryQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutDeliveryQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutDeliveryQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutDeliveryQueue.Controls.Add(this.labelTokenId, 0, 0);
             this.tableLayoutDeliveryQueue.Controls.Add(this.label1, 1, 0);
             this.tableLayoutDeliveryQueue.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutDeliveryQueue.Location = new System.Drawing.Point(527, 50);
+            this.tableLayoutDeliveryQueue.Location = new System.Drawing.Point(601, 50);
             this.tableLayoutDeliveryQueue.Name = "tableLayoutDeliveryQueue";
             this.tableLayoutDeliveryQueue.RowCount = 1;
             this.tableLayoutDeliveryQueue.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutDeliveryQueue.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutDeliveryQueue.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutDeliveryQueue.Size = new System.Drawing.Size(270, 20);
+            this.tableLayoutDeliveryQueue.Size = new System.Drawing.Size(122, 20);
             this.tableLayoutDeliveryQueue.TabIndex = 1;
             this.tableLayoutDeliveryQueue.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -97,7 +96,7 @@
             // buttonRefreshDeliveryJob
             // 
             this.buttonRefreshDeliveryJob.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.buttonRefreshDeliveryJob.Location = new System.Drawing.Point(913, 10);
+            this.buttonRefreshDeliveryJob.Location = new System.Drawing.Point(1118, 12);
             this.buttonRefreshDeliveryJob.Name = "buttonRefreshDeliveryJob";
             this.buttonRefreshDeliveryJob.Size = new System.Drawing.Size(75, 23);
             this.buttonRefreshDeliveryJob.TabIndex = 3;
@@ -107,7 +106,7 @@
             // 
             // buttonPrintPause
             // 
-            this.buttonPrintPause.Location = new System.Drawing.Point(397, 462);
+            this.buttonPrintPause.Location = new System.Drawing.Point(473, 462);
             this.buttonPrintPause.Name = "buttonPrintPause";
             this.buttonPrintPause.Size = new System.Drawing.Size(75, 62);
             this.buttonPrintPause.TabIndex = 4;
@@ -130,11 +129,12 @@
             // 
             this.tableLayoutPrintQueue.AutoSize = true;
             this.tableLayoutPrintQueue.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPrintQueue.ColumnCount = 4;
-            this.tableLayoutPrintQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.07013F));
-            this.tableLayoutPrintQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.92987F));
-            this.tableLayoutPrintQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
-            this.tableLayoutPrintQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutPrintQueue.ColumnCount = 5;
+            this.tableLayoutPrintQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPrintQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPrintQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPrintQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPrintQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPrintQueue.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPrintQueue.Controls.Add(this.label3, 1, 0);
             this.tableLayoutPrintQueue.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -142,9 +142,7 @@
             this.tableLayoutPrintQueue.Name = "tableLayoutPrintQueue";
             this.tableLayoutPrintQueue.RowCount = 1;
             this.tableLayoutPrintQueue.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPrintQueue.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPrintQueue.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPrintQueue.Size = new System.Drawing.Size(270, 20);
+            this.tableLayoutPrintQueue.Size = new System.Drawing.Size(122, 20);
             this.tableLayoutPrintQueue.TabIndex = 4;
             // 
             // label2
@@ -170,7 +168,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1000, 536);
+            this.ClientSize = new System.Drawing.Size(1205, 536);
             this.Controls.Add(this.tableLayoutPrintQueue);
             this.Controls.Add(this.labelPrintQueue);
             this.Controls.Add(this.buttonPrintPause);
