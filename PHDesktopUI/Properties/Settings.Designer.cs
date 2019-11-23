@@ -25,7 +25,7 @@ namespace PHDesktopUI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://preasy-53c43.appspot.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://api-dot-preasy-53c43.appspot.com")]
         public string serverAddress {
             get {
                 return ((string)(this["serverAddress"]));

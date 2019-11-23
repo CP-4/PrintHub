@@ -44,7 +44,7 @@ namespace HubLibrary
             tagLineLabel.TextFrame.TextRange.Text = "Printed with \u2764 by Preasy";
             tagLineLabel.Line.Visible = MsoTriState.msoFalse;
 
-            Microsoft.Office.Interop.Word.Shape fileIdLabel = WordApp.ActiveDocument.Shapes.AddLabel(MsoTextOrientation.msoTextOrientationHorizontal, 0, pageHeight - 25, 75, 25);
+            Microsoft.Office.Interop.Word.Shape fileIdLabel = WordApp.ActiveDocument.Shapes.AddLabel(MsoTextOrientation.msoTextOrientationHorizontal, 20, pageHeight - 25, 75, 25);
             fileIdLabel.TextFrame.TextRange.Text = fileId;
             fileIdLabel.Line.Visible = MsoTriState.msoFalse;
 

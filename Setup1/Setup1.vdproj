@@ -28,12 +28,6 @@
         "Entry"
         {
         "MsmKey" = "8:_22D05C0ABE83C9A363366E1CAC4049EC"
-        "OwnerKey" = "8:_48415648D9E3D941A83B4156C11EA3B6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_22D05C0ABE83C9A363366E1CAC4049EC"
         "OwnerKey" = "8:_82F53812AFA94CEABC950E84C59CCD0C"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -41,6 +35,12 @@
         {
         "MsmKey" = "8:_22D05C0ABE83C9A363366E1CAC4049EC"
         "OwnerKey" = "8:_C722754A56B5F83C69DE5018DE34D7EC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_22D05C0ABE83C9A363366E1CAC4049EC"
+        "OwnerKey" = "8:_48415648D9E3D941A83B4156C11EA3B6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -136,13 +136,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_48415648D9E3D941A83B4156C11EA3B6"
+        "OwnerKey" = "8:_82F53812AFA94CEABC950E84C59CCD0C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_82F53812AFA94CEABC950E84C59CCD0C"
+        "OwnerKey" = "8:_48415648D9E3D941A83B4156C11EA3B6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -668,6 +668,20 @@
             "Transitive" = "11:FALSE"
             "Target" = "8:_545739F4305A4BF7A78B20E09401E6EA"
             "Folder" = "8:_B23AB3CA086B4FD79F1A27D2102CAF14"
+            "WorkingFolder" = "8:_1F1DB90920E04E9D87C551A2E1AA327F"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B57D8EF8850841FFB9B18EB86DCA2FDF"
+            {
+            "Name" = "8:PrintHub"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_545739F4305A4BF7A78B20E09401E6EA"
+            "Folder" = "8:_66355910AD294EEB83D6DF47BD838FAD"
             "WorkingFolder" = "8:_1F1DB90920E04E9D87C551A2E1AA327F"
             "Icon" = "8:"
             "Feature" = "8:"

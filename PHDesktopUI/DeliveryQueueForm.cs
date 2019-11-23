@@ -122,7 +122,7 @@ namespace PHDesktopUI
                 
                 tableLayoutDeliveryQueue.Controls.Add(new Label() { Text = deliveryJob.Id.ToString() }, 0, tableLayoutDeliveryQueue.RowCount - 1);
                 tableLayoutDeliveryQueue.Controls.Add(new Label() { Text = deliveryJob.Student_Name }, 1, tableLayoutDeliveryQueue.RowCount - 1);
-                tableLayoutDeliveryQueue.Controls.Add(new Label() { Text = deliveryJob.Pages.ToString() }, 2, tableLayoutPrintQueue.RowCount - 1);
+                tableLayoutDeliveryQueue.Controls.Add(new Label() { Text = deliveryJob.Pages.ToString() }, 2, tableLayoutDeliveryQueue.RowCount - 1);
                 tableLayoutDeliveryQueue.Controls.Add(deliveredButton.Last(), 3, tableLayoutDeliveryQueue.RowCount - 1);
                 tableLayoutDeliveryQueue.Controls.Add(cancleButton.Last(), 4, tableLayoutDeliveryQueue.RowCount - 1);
 

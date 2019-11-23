@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="serverAddress" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://preasy-53c43.appspot.com</Value>
+      <Value Profile="(Default)">https://api-dot-preasy-53c43.appspot.com</Value>
     </Setting>
   </Settings>
 </SettingsFile>
