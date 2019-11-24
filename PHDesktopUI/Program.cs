@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using HubLibrary;
+using System.Runtime.InteropServices;
 
 namespace PHDesktopUI
 {
@@ -32,8 +33,6 @@ namespace PHDesktopUI
         [STAThread]
         static void Main()
         {
-
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             ApiHelper.InitializeClient();

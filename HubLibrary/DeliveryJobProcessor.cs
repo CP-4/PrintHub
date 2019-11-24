@@ -42,7 +42,7 @@ namespace HubLibrary
             }
             catch
             {
-                MessageBox.Show("Unable to connect to Internet.");
+                //MessageBox.Show("Unable to connect to Internet.");
                 return new Queue<PrintJobModel>();
             }
 
