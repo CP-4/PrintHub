@@ -9,6 +9,7 @@ using HubLibrary.Model;
 using System.Diagnostics;
 using PdfiumViewer;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace HubLibrary
 {
@@ -216,5 +217,36 @@ namespace HubLibrary
             }
         }
         
+        public static async Task<PrintJobModel> CancelPrint(PrintJobModel job)
+        {
+            if (job == null)
+            {
+                throw new ArgumentNullException(nameof(job));
+            }
+
+            string url = GlobalConfig.ApiHost + "/file2/shop/setprintjobstatus/"; // + job.Id.ToString();
+
+            job.PrintJobStatus = -1;
+            var jsonJob = JsonConvert.SerializeObject(job);
+
+            var stringContent = new StringContent(jsonJob, Encoding.UTF8, "application/json");
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.PutAsync(url, stringContent))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    PrintJobModel deliveredJob = await response.Content.ReadAsAsync<PrintJobModel>();
+
+                    return deliveredJob;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+
+            }
+    }
+
+
     }
 }

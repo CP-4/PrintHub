@@ -17,6 +17,7 @@ namespace PHDesktopUI
     public partial class PrintQueueControl : UserControl
     {
         private const string textPrintButton = "Print";
+        private const string textCancelButton = "X";
 
         public Queue<PrintJobModel> PrintJobQueue = new Queue<PrintJobModel>();
         public string StringPrintJobQueue = "";
@@ -36,6 +37,7 @@ namespace PHDesktopUI
 
 
         private List<Button> printButton = new List<Button>();
+        private List<Button> cancelButton = new List<Button>();
 
         public PrintQueueControl()
         {
@@ -90,6 +92,21 @@ namespace PHDesktopUI
 
         }
 
+        private async void cancelPrint(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            DataDelivered data = (DataDelivered)button.Tag;
+            try
+            {
+                await PrintJobProcessor.CancelPrint(data.Job);
+                TableLayoutHelper.RemoveArbitraryRow(tableLayoutPrintQueue, data.RowIndex);
+            }
+            catch (WebException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+
         private void populatePrintQueue(Queue<PrintJobModel> printJobQueue)
         {
             PrintJobModel printJob;
@@ -103,21 +120,22 @@ namespace PHDesktopUI
 
                 printButton.Add(new Button() { Text = textPrintButton, Tag = data.Last() });
                 printButton.Last().Click += new EventHandler(manualPrintFile);
-                
 
-                //cancleButton.Add(new Button() { Text = cancel, Tag = data.Last() });
-                //cancleButton.Last().Click += new EventHandler(cancelDelivery);
-
+                cancelButton.Add(new Button() { Text = textCancelButton, Tag = data.Last() });
+                cancelButton.Last().Click += new EventHandler(cancelPrint);
 
                 tableLayoutPrintQueue.Controls.Add(new Label() { Text = printJob.Id.ToString() }, 0, tableLayoutPrintQueue.RowCount - 1);
                 tableLayoutPrintQueue.Controls.Add(new Label() { Text = printJob.Student_Name }, 1, tableLayoutPrintQueue.RowCount - 1);
                 tableLayoutPrintQueue.Controls.Add(new Label() { Text = printJob.Pages.ToString() }, 2, tableLayoutPrintQueue.RowCount - 1);
                 tableLayoutPrintQueue.Controls.Add(printButton.Last(), 3, tableLayoutPrintQueue.RowCount - 1);
+                tableLayoutPrintQueue.Controls.Add(cancelButton.Last(), 4, tableLayoutPrintQueue.RowCount - 1);
                 //tableLayoutPrintQueue.Controls.Add(cancleButton.Last(), 3, tableLayoutPrintQueue.RowCount - 1);
 
             }
 
         }
+
+
 
         public async void RefreshPrintJobQueue(Queue<PrintJobModel> printJobQueue)
         {
