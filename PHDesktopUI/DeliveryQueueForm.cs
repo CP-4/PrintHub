@@ -13,7 +13,7 @@ using System.Windows.Forms;
 using HubLibrary;
 using HubLibrary.Model;
 using System.Runtime.InteropServices;
-
+using System.Net.Http;
 
 namespace PHDesktopUI
 {
@@ -81,10 +81,44 @@ namespace PHDesktopUI
             //refreshDeliveryJobQueue();
             //refreshPrintJobQueue(PrintJobQueue);
 
+            checkLoggedInAsync();
 
             printQueueControl1.BringToFront();
         }
-        
+
+        public async Task checkLoggedInAsync()
+        {
+            Debug.WriteLine(Properties.Settings.Default.accessToken);
+            Properties.Settings.Default.Upgrade();
+
+            string url = GlobalConfig.ApiHost + "/file2/shop/getprintjobs";
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
+            {
+                //Debug.WriteLine(response.StatusCode);
+
+                if (response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    MessageBox.Show("Please login again.");
+                    Properties.Settings.Default.accessToken = "";
+                    Properties.Settings.Default.Save();
+                    ApiHelper.InitializeClient();
+                    var t = new Thread(() => Application.Run(new LoginForm()));
+                    t.Start();
+                    //this.Hide();
+                    this.Close();
+                }
+                else if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
+
         //private async void setDelivered(object sender, EventArgs e)
         //{
         //    Button button = sender as Button;
@@ -98,7 +132,7 @@ namespace PHDesktopUI
         //    {
         //        Debug.WriteLine(ex.Message);
         //    }
-            
+
         //}
 
         //private async void cancelDelivery(object sender, EventArgs e)
@@ -115,7 +149,7 @@ namespace PHDesktopUI
         //        Debug.WriteLine(ex.Message);
         //    }
         //}
-        
+
         //private void populateDeliveryQueue(Queue<PrintJobModel> deliveryJobQueue)
         //{
         //    PrintJobModel deliveryJob;
@@ -132,8 +166,8 @@ namespace PHDesktopUI
 
         //        cancleButton.Add(new Button() { Text = textCancelButton, Tag = data.Last() });
         //        cancleButton.Last().Click += new EventHandler (cancelDelivery);
-                
-                
+
+
         //        tableLayoutDeliveryQueue.Controls.Add(new Label() { Text = deliveryJob.Id.ToString() }, 0, tableLayoutDeliveryQueue.RowCount - 1);
         //        tableLayoutDeliveryQueue.Controls.Add(new Label() { Text = deliveryJob.Student_Name }, 1, tableLayoutDeliveryQueue.RowCount - 1);
         //        tableLayoutDeliveryQueue.Controls.Add(new Label() { Text = deliveryJob.Pages.ToString() }, 2, tableLayoutDeliveryQueue.RowCount - 1);
@@ -141,9 +175,9 @@ namespace PHDesktopUI
         //        tableLayoutDeliveryQueue.Controls.Add(cancleButton.Last(), 4, tableLayoutDeliveryQueue.RowCount - 1);
 
         //    }
-            
+
         //}
-        
+
         //private async void refreshDeliveryJobQueue()
         //{
         //    try
@@ -154,7 +188,7 @@ namespace PHDesktopUI
         //    {
         //        //MessageBox.Show("Unable to connect to Internet.");
         //    }
-            
+
         //    TableLayoutHelper.ClearTable(tableLayoutDeliveryQueue);
 
         //    populateDeliveryQueue(deliveryJobQueue);
@@ -304,7 +338,7 @@ namespace PHDesktopUI
                 buttonPrintPause.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(18)))), ((int)(((byte)(20)))));
                 buttonPrintPause.Image = global::PHDesktopUI.Properties.Resources.pause_24;
                 PrintJobProcessor.PausePrint = false;
-                buttonPrintPause.Text = "   Stop Printing";
+                buttonPrintPause.Text = "   Auto accept: ON";
             }
             else
             {
@@ -312,7 +346,7 @@ namespace PHDesktopUI
                 buttonPrintPause.BackColor =  System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(140)))), ((int)(((byte)(80)))));
                 this.buttonPrintPause.Image = global::PHDesktopUI.Properties.Resources.play_7_24;
                 PrintJobProcessor.PausePrint = true;
-                buttonPrintPause.Text = "   Start Printing";
+                buttonPrintPause.Text = "   Auto accept: OFF";
             }
         }
 
@@ -347,6 +381,11 @@ namespace PHDesktopUI
         private void buttonMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void PrintHubForm_Shown(object sender, EventArgs e)
+        {
+            //this.WindowState = FormWindowState.Maximized;
         }
     }
 }

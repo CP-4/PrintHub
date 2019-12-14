@@ -39,12 +39,12 @@
             // labelPrintQueue
             // 
             this.labelPrintQueue.AutoSize = true;
-            this.labelPrintQueue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(158)))), ((int)(((byte)(66)))));
-            this.labelPrintQueue.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPrintQueue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(180)))), ((int)(((byte)(75)))));
+            this.labelPrintQueue.Font = new System.Drawing.Font("Century Gothic", 16F);
             this.labelPrintQueue.ForeColor = System.Drawing.Color.White;
             this.labelPrintQueue.Location = new System.Drawing.Point(3, 9);
             this.labelPrintQueue.Name = "labelPrintQueue";
-            this.labelPrintQueue.Size = new System.Drawing.Size(200, 39);
+            this.labelPrintQueue.Size = new System.Drawing.Size(136, 25);
             this.labelPrintQueue.TabIndex = 0;
             this.labelPrintQueue.Text = "Print Queue";
             // 
@@ -52,7 +52,6 @@
             // 
             this.tableLayoutPrintQueue.AutoSize = true;
             this.tableLayoutPrintQueue.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPrintQueue.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPrintQueue.ColumnCount = 5;
             this.tableLayoutPrintQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPrintQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -65,24 +64,24 @@
             this.tableLayoutPrintQueue.Location = new System.Drawing.Point(10, 70);
             this.tableLayoutPrintQueue.Name = "tableLayoutPrintQueue";
             this.tableLayoutPrintQueue.RowCount = 1;
-            this.tableLayoutPrintQueue.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPrintQueue.Size = new System.Drawing.Size(128, 22);
+            this.tableLayoutPrintQueue.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPrintQueue.Size = new System.Drawing.Size(122, 21);
             this.tableLayoutPrintQueue.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(4, 1);
+            this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 20);
+            this.label2.Size = new System.Drawing.Size(62, 21);
             this.label2.TabIndex = 2;
             this.label2.Text = "Token ID";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(73, 1);
+            this.label3.Location = new System.Drawing.Point(71, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 17);
             this.label3.TabIndex = 3;
@@ -90,10 +89,10 @@
             // 
             // panelTitleBG
             // 
-            this.panelTitleBG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(158)))), ((int)(((byte)(66)))));
+            this.panelTitleBG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(180)))), ((int)(((byte)(75)))));
             this.panelTitleBG.Location = new System.Drawing.Point(0, 0);
             this.panelTitleBG.Name = "panelTitleBG";
-            this.panelTitleBG.Size = new System.Drawing.Size(614, 66);
+            this.panelTitleBG.Size = new System.Drawing.Size(614, 48);
             this.panelTitleBG.TabIndex = 6;
             // 
             // PrintQueueControl

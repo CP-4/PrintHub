@@ -6,26 +6,16 @@ using System.Threading;
 using System.Windows.Forms;
 using HubLibrary;
 using System.Runtime.InteropServices;
+using System.Net.Http;
+using System.Diagnostics;
+using System.Net;
 
 namespace PHDesktopUI
 {
     static class Program
     {
-
-        public static int isPause { get; set; }
-        public static int IsPause
-        {
-            get { return isPause; }
-            set
-            {
-                isPause = value;
-                if (isPause == 1)
-                {
-                    // DO SOMETHING HERE
-                }
-            }
-        }
-
+        public static string accessToken = "";
+        public static bool isLoggedIn = false;
 
         /// <summary>
         /// The main entry point for the application.
@@ -35,17 +25,37 @@ namespace PHDesktopUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            ApiHelper.InitializeClient();
 
-            GlobalConfig.ApiHost = Properties.Settings.Default.serverAddress;
+            //GlobalConfig.ApiHost = Properties.Settings.Default.serverAddress;
 
             Application.ApplicationExit += new EventHandler(OnApplicationExit);
 
             //Thread threadPrintJobProcessor = new Thread(PrintJobProcessor.PrintJobThread);
             //threadPrintJobProcessor.Start();
 
-            Application.Run(new PrintHubForm());
+            //PrintPdfHelper.PdfSharpSample();
+
+            //Properties.Settings.Default.accessToken = "asdf";
+            //Properties.Settings.Default.Save();
+            accessToken = Properties.Settings.Default.accessToken;
+
+            //ApiHelper.InitializeClient(accessToken);
+            //Application.Run(new LoginForm());
+
+            if (!string.IsNullOrWhiteSpace(accessToken))
+            {
+                ApiHelper.InitializeClient(accessToken);
+                Application.Run(new PrintHubForm());
+            }
+            else
+            {
+                ApiHelper.InitializeClient();
+                Application.Run(new LoginForm());
+            }
+
+
         }
+
 
         private static void OnApplicationExit(object sender, EventArgs e)
         {

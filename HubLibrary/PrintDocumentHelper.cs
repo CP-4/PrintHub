@@ -75,7 +75,24 @@ namespace HubLibrary
 
                 //System.Windows.Forms.MessageBox.Show("Just before word.Document.PrintOut()");
 
-                document.PrintOut();
+                bool manualDuplexPrint = false;
+
+                switch (printJob.Print_Feature)
+                {
+                    case "SINGLESIDE":
+                        manualDuplexPrint = false;
+                        break;
+
+                    case "DOUBLESIDE":
+                        manualDuplexPrint = true;
+                        break;
+
+                    default:
+                        System.Windows.Forms.MessageBox.Show("In PrintDocument switch case: Default");
+                        break;
+                }
+
+                document.PrintOut(Copies: printJob.Print_Copies, ManualDuplexPrint: manualDuplexPrint);
                 object saveOption = WdSaveOptions.wdDoNotSaveChanges;
                 object originalFormat = WdOriginalFormat.wdOriginalDocumentFormat;
                 object routeDocument = false;
@@ -100,13 +117,31 @@ namespace HubLibrary
             {
                 // Now print the PDF document
                 //System.Windows.Forms.MessageBox.Show("Just before PdfDocument.Load()");
+
+                docPath = PrintPdfHelper.PdfSharpSample(docPath, printJob.Id);
+
                 using (var document = PdfDocument.Load(docPath))
                 {
                     //System.Windows.Forms.MessageBox.Show("Just after PrintWord");
                     using (var printDocument = document.CreatePrintDocument())
                     {
-                        
+                        switch (printJob.Print_Feature)
+                        {
+                            case "SINGLESIDE":
+                                printDocument.PrinterSettings.Duplex = Duplex.Simplex;
+                                break;
+
+                            case "DOUBLESIDE":
+                                printDocument.PrinterSettings.Duplex = Duplex.Vertical;
+                                break;
+                                
+                            default:
+                                System.Windows.Forms.MessageBox.Show("In PrintDocument switch case: Default");
+                                break;
+                        }
+
                         printDocument.PrintController = new StandardPrintController();
+                        printDocument.PrinterSettings.Copies = (short)printJob.Print_Copies;
                         //System.Windows.Forms.MessageBox.Show("Just before printPdf.Print()");
                         printDocument.Print();
                         //System.Windows.Forms.MessageBox.Show("Just after printPdf.Print()");
@@ -123,7 +158,7 @@ namespace HubLibrary
 
         public static void PrintDocument(string docPath, PrintJobModel printJob)
         {
-            System.Windows.Forms.MessageBox.Show("Printing File ID: # " + printJob.Id);
+            //System.Windows.Forms.MessageBox.Show("Printing File ID: # " + printJob.Id);
             switch (printJob.DocType)
             {
                 case ".doc":

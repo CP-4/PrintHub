@@ -106,6 +106,7 @@
     <Compile Include="ApiHelper.cs" />
     <Compile Include="DeliveryJobProcessor.cs" />
     <Compile Include="GlobalConfig.cs" />
+    <Compile Include="LoginHelper.cs" />
     <Compile Include="Model\FileModel.cs" />
     <Compile Include="Model\LocationModel.cs" />
     <Compile Include="Model\PersonModel.cs" />

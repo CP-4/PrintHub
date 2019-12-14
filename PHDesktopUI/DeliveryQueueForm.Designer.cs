@@ -39,9 +39,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonMinimize = new System.Windows.Forms.Button();
-            this.deliveryQueueControl1 = new PHDesktopUI.DeliveryQueueControl();
-            this.printQueueControl1 = new PHDesktopUI.PrintQueueControl();
             this.label1 = new System.Windows.Forms.Label();
+            this.printQueueControl1 = new PHDesktopUI.PrintQueueControl();
+            this.deliveryQueueControl1 = new PHDesktopUI.DeliveryQueueControl();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +67,7 @@
             this.buttonPrintPause.Padding = new System.Windows.Forms.Padding(12);
             this.buttonPrintPause.Size = new System.Drawing.Size(200, 75);
             this.buttonPrintPause.TabIndex = 4;
-            this.buttonPrintPause.Text = "   Start Printing";
+            this.buttonPrintPause.Text = "   Auto accept: OFF";
             this.buttonPrintPause.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonPrintPause.UseVisualStyleBackColor = false;
             this.buttonPrintPause.Click += new System.EventHandler(this.buttonPrintPause_Click);
@@ -135,7 +135,7 @@
             this.labelAppTitle.ForeColor = System.Drawing.Color.White;
             this.labelAppTitle.Image = ((System.Drawing.Image)(resources.GetObject("labelAppTitle.Image")));
             this.labelAppTitle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelAppTitle.Location = new System.Drawing.Point(0, 14);
+            this.labelAppTitle.Location = new System.Drawing.Point(0, 7);
             this.labelAppTitle.Margin = new System.Windows.Forms.Padding(0);
             this.labelAppTitle.Name = "labelAppTitle";
             this.labelAppTitle.Size = new System.Drawing.Size(200, 75);
@@ -193,15 +193,17 @@
             this.buttonMinimize.UseVisualStyleBackColor = true;
             this.buttonMinimize.Click += new System.EventHandler(this.buttonMinimize_Click);
             // 
-            // deliveryQueueControl1
+            // label1
             // 
-            this.deliveryQueueControl1.BackColor = System.Drawing.Color.White;
-            this.deliveryQueueControl1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deliveryQueueControl1.Location = new System.Drawing.Point(200, 43);
-            this.deliveryQueueControl1.Margin = new System.Windows.Forms.Padding(5);
-            this.deliveryQueueControl1.Name = "deliveryQueueControl1";
-            this.deliveryQueueControl1.Size = new System.Drawing.Size(614, 466);
-            this.deliveryQueueControl1.TabIndex = 9;
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(29)))), ((int)(((byte)(30)))));
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(529, 514);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(281, 21);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "https://preasy-53c43.appspot.com";
             // 
             // printQueueControl1
             // 
@@ -213,17 +215,15 @@
             this.printQueueControl1.Size = new System.Drawing.Size(614, 466);
             this.printQueueControl1.TabIndex = 8;
             // 
-            // label1
+            // deliveryQueueControl1
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(29)))), ((int)(((byte)(30)))));
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(546, 511);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(268, 21);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "www.preasy-53c43.appspot.com";
+            this.deliveryQueueControl1.BackColor = System.Drawing.Color.White;
+            this.deliveryQueueControl1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deliveryQueueControl1.Location = new System.Drawing.Point(200, 43);
+            this.deliveryQueueControl1.Margin = new System.Windows.Forms.Padding(5);
+            this.deliveryQueueControl1.Name = "deliveryQueueControl1";
+            this.deliveryQueueControl1.Size = new System.Drawing.Size(614, 466);
+            this.deliveryQueueControl1.TabIndex = 9;
             // 
             // PrintHubForm
             // 
@@ -242,7 +242,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PrintHubForm";
-            this.Opacity = 0.97D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Print Hub";
             this.Load += new System.EventHandler(this.PrintHub_Load);
@@ -263,10 +262,10 @@
         private System.Windows.Forms.Label labelAppTitle;
         private System.Windows.Forms.Panel panelPrintPause;
         private System.Windows.Forms.Panel panel1;
-        private DeliveryQueueControl deliveryQueueControl1;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonMinimize;
         private System.Windows.Forms.Label label1;
+        private DeliveryQueueControl deliveryQueueControl1;
     }
 }
 

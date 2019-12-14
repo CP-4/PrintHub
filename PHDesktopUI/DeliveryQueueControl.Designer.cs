@@ -41,13 +41,13 @@
             // labelDeliveryQueue
             // 
             this.labelDeliveryQueue.AutoSize = true;
-            this.labelDeliveryQueue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(158)))), ((int)(((byte)(66)))));
-            this.labelDeliveryQueue.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDeliveryQueue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(180)))), ((int)(((byte)(75)))));
+            this.labelDeliveryQueue.Font = new System.Drawing.Font("Century Gothic", 16F);
             this.labelDeliveryQueue.ForeColor = System.Drawing.Color.White;
             this.labelDeliveryQueue.Location = new System.Drawing.Point(3, 9);
             this.labelDeliveryQueue.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.labelDeliveryQueue.Name = "labelDeliveryQueue";
-            this.labelDeliveryQueue.Size = new System.Drawing.Size(259, 39);
+            this.labelDeliveryQueue.Size = new System.Drawing.Size(178, 25);
             this.labelDeliveryQueue.TabIndex = 1;
             this.labelDeliveryQueue.Text = "Delivery Queue";
             // 
@@ -55,7 +55,6 @@
             // 
             this.tableLayoutDeliveryQueue.AutoSize = true;
             this.tableLayoutDeliveryQueue.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutDeliveryQueue.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutDeliveryQueue.ColumnCount = 5;
             this.tableLayoutDeliveryQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutDeliveryQueue.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -69,25 +68,25 @@
             this.tableLayoutDeliveryQueue.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutDeliveryQueue.Name = "tableLayoutDeliveryQueue";
             this.tableLayoutDeliveryQueue.RowCount = 1;
-            this.tableLayoutDeliveryQueue.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutDeliveryQueue.Size = new System.Drawing.Size(136, 34);
+            this.tableLayoutDeliveryQueue.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutDeliveryQueue.Size = new System.Drawing.Size(130, 33);
             this.tableLayoutDeliveryQueue.TabIndex = 2;
             // 
             // labelTokenId
             // 
             this.labelTokenId.AutoSize = true;
             this.labelTokenId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTokenId.Location = new System.Drawing.Point(6, 1);
+            this.labelTokenId.Location = new System.Drawing.Point(5, 0);
             this.labelTokenId.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.labelTokenId.Name = "labelTokenId";
-            this.labelTokenId.Size = new System.Drawing.Size(62, 32);
+            this.labelTokenId.Size = new System.Drawing.Size(62, 33);
             this.labelTokenId.TabIndex = 2;
             this.labelTokenId.Text = "Token ID";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(79, 1);
+            this.label1.Location = new System.Drawing.Point(77, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 17);
@@ -102,7 +101,7 @@
             this.buttonRefreshDeliveryJob.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRefreshDeliveryJob.Font = new System.Drawing.Font("Century Gothic", 10F);
             this.buttonRefreshDeliveryJob.Image = ((System.Drawing.Image)(resources.GetObject("buttonRefreshDeliveryJob.Image")));
-            this.buttonRefreshDeliveryJob.Location = new System.Drawing.Point(554, 9);
+            this.buttonRefreshDeliveryJob.Location = new System.Drawing.Point(554, 16);
             this.buttonRefreshDeliveryJob.Margin = new System.Windows.Forms.Padding(5);
             this.buttonRefreshDeliveryJob.Name = "buttonRefreshDeliveryJob";
             this.buttonRefreshDeliveryJob.Padding = new System.Windows.Forms.Padding(8);
@@ -113,10 +112,10 @@
             // 
             // panelTitleBG
             // 
-            this.panelTitleBG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(158)))), ((int)(((byte)(66)))));
+            this.panelTitleBG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(180)))), ((int)(((byte)(75)))));
             this.panelTitleBG.Location = new System.Drawing.Point(0, 0);
             this.panelTitleBG.Name = "panelTitleBG";
-            this.panelTitleBG.Size = new System.Drawing.Size(614, 66);
+            this.panelTitleBG.Size = new System.Drawing.Size(614, 48);
             this.panelTitleBG.TabIndex = 5;
             // 
             // DeliveryQueueControl

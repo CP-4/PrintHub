@@ -12,9 +12,14 @@ namespace HubLibrary
     {
         public static HttpClient ApiClient { get; set; }
 
-        public static void InitializeClient()
+        public static void InitializeClient(string accessToken = "")
         {
             ApiClient = new HttpClient();
+
+            if (!string.IsNullOrWhiteSpace(accessToken))
+            {
+                ApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            }
             //ApiClient.BaseAddress = new Uri(GlobalConfig.ApiHost + "/");
             ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
