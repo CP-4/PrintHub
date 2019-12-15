@@ -81,7 +81,7 @@ namespace PHDesktopUI
             //refreshDeliveryJobQueue();
             //refreshPrintJobQueue(PrintJobQueue);
 
-            checkLoggedInAsync();
+            //checkLoggedInAsync();
 
             printQueueControl1.BringToFront();
         }
@@ -367,6 +367,7 @@ namespace PHDesktopUI
         private void buttonClose_Click(object sender, EventArgs e)
         {
             this.Close();
+            Application.Exit();
         }
 
         private void PrintHubForm_MouseDown(object sender, MouseEventArgs e)

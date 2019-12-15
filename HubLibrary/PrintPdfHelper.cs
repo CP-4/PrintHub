@@ -75,6 +75,7 @@ namespace HubLibrary
 
             PdfDocument PDFDoc = PdfReader.Open(oldFile, PdfDocumentOpenMode.Import);
             PdfDocument PDFNewDoc = new PdfDocument();
+            XPdfFontOptions options = new XPdfFontOptions(PdfFontEncoding.Unicode, PdfFontEmbedding.Always);
 
             for (int Pg = 0; Pg < PDFDoc.Pages.Count; Pg++)
             {
@@ -83,9 +84,9 @@ namespace HubLibrary
 
             PdfPage pp = PDFNewDoc.Pages[0];
             XGraphics gfx = XGraphics.FromPdfPage(pp);
-            XFont font = new XFont("Arial", 10, XFontStyle.Regular);
+            XFont font = new XFont("Arial", 10, XFontStyle.Regular, options);
             gfx.DrawString(footerFileId, font, XBrushes.Black, new XRect(20, 0, pp.Width, pp.Height), XStringFormats.BottomLeft);
-            gfx.DrawString("Printed with Love with Preasy", font, XBrushes.Black, new XRect(100, 0, pp.Width, pp.Height), XStringFormats.BottomLeft);
+            gfx.DrawString("Printed with love by Preasy", font, XBrushes.Black, new XRect(100, 0, pp.Width, pp.Height), XStringFormats.BottomLeft);
 
             PDFNewDoc.Save(oldFile);
             return oldFile;

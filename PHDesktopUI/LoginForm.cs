@@ -25,8 +25,8 @@ namespace PHDesktopUI
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            //textBoxEmail.Text = "user8@asdf.com";
-            //textBoxPassword.Text = "asdf";
+            textBoxEmail.Text = "user8@asdf.com";
+            textBoxPassword.Text = "asdf";
 
             object data = new
             {
@@ -46,10 +46,10 @@ namespace PHDesktopUI
                 ApiHelper.InitializeClient(token);
                 Properties.Settings.Default.accessToken = token;
                 Properties.Settings.Default.Save();
-                //PrintHubForm printHubForm = new PrintHubForm();
-                //printHubForm.Show();
-                var t = new Thread(() => Application.Run(new PrintHubForm()));
-                t.Start();
+
+                (new PrintHubForm()).Show();
+                //var t = new Thread(() => Application.Run(new PrintHubForm()));
+                //t.Start();
                 //this.Hide();
                 this.Close();
             }
@@ -62,11 +62,9 @@ namespace PHDesktopUI
 
         private void buttonSingup_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Please call 9512184367 to register to Preasy\n" +
-                "or\n" +
-                "send an email to writetopreasy@gmail.com");
+            (new SingupForm()).Show();
+            this.Close();
         }
-
         
         private void textBoxEmail_Click(object sender, EventArgs e)
         {

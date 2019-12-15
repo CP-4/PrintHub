@@ -30,30 +30,29 @@ namespace PHDesktopUI
 
             Application.ApplicationExit += new EventHandler(OnApplicationExit);
 
-            //Thread threadPrintJobProcessor = new Thread(PrintJobProcessor.PrintJobThread);
-            //threadPrintJobProcessor.Start();
-
-            //PrintPdfHelper.PdfSharpSample();
-
             //Properties.Settings.Default.accessToken = "asdf";
             //Properties.Settings.Default.Save();
             accessToken = Properties.Settings.Default.accessToken;
 
-            //ApiHelper.InitializeClient(accessToken);
-            //Application.Run(new LoginForm());
+            ApiHelper.InitializeClient();
+            //(new LoginForm()).Show();
+            (new PrintHubForm()).Show();
+            Application.Run();
 
-            if (!string.IsNullOrWhiteSpace(accessToken))
-            {
-                ApiHelper.InitializeClient(accessToken);
-                Application.Run(new PrintHubForm());
-            }
-            else
-            {
-                ApiHelper.InitializeClient();
-                Application.Run(new LoginForm());
-            }
+            //if (!string.IsNullOrWhiteSpace(accessToken))
+            //{
+            //    ApiHelper.InitializeClient(accessToken);
+            //    (new PrintHubForm()).Show();
+            //    Application.Run();
+            //}
+            //else
+            //{
+            //    ApiHelper.InitializeClient();
+            //    (new LoginForm()).Show();
+            //    Application.Run();
+            //}
 
-
+            
         }
 
 
