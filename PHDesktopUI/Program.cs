@@ -34,25 +34,25 @@ namespace PHDesktopUI
             //Properties.Settings.Default.Save();
             accessToken = Properties.Settings.Default.accessToken;
 
-            ApiHelper.InitializeClient();
+            //ApiHelper.InitializeClient();
             //(new LoginForm()).Show();
-            (new PrintHubForm()).Show();
-            Application.Run();
+            //(new PrintHubForm()).Show();
+            //Application.Run();
 
-            //if (!string.IsNullOrWhiteSpace(accessToken))
-            //{
-            //    ApiHelper.InitializeClient(accessToken);
-            //    (new PrintHubForm()).Show();
-            //    Application.Run();
-            //}
-            //else
-            //{
-            //    ApiHelper.InitializeClient();
-            //    (new LoginForm()).Show();
-            //    Application.Run();
-            //}
+            if (!string.IsNullOrWhiteSpace(accessToken))
+            {
+                ApiHelper.InitializeClient(accessToken);
+                (new PrintHubForm()).Show();
+                Application.Run();
+            }
+            else
+            {
+                ApiHelper.InitializeClient();
+                (new LoginForm()).Show();
+                Application.Run();
+            }
 
-            
+
         }
 
 

@@ -11,8 +11,8 @@ namespace HubLibrary
 
         //public static string ApiHost = "http://192.168.43.199:8000";
         //public static string ApiHost = "https://api-dot-preasy-53c43.appspot.com";
-        public static string ApiHost = "https://dev-api-dot-preasy-53c43.appspot.com";
-        //public static string ApiHost = "http://127.0.0.1:8000";
+        //public static string ApiHost = "https://dev-api-dot-preasy-53c43.appspot.com";
+        public static string ApiHost = "http://127.0.0.1:8000";
         //public static string ApiHost = "http://192.168.1.103:8000";
 
         public static bool isPlay { get; set; }

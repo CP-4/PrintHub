@@ -10,7 +10,7 @@ using System.Diagnostics;
 using PdfiumViewer;
 using HubLibrary.Model;
 using System.Windows;
-
+using System.IO;
 
 namespace HubLibrary
 {
@@ -56,6 +56,21 @@ namespace HubLibrary
             word.Quit();
         }
 
+        public static bool IsFileReady(string filename)
+        {
+            // If the file can be opened for exclusive access it means that the file
+            // is no longer locked by another process.
+            try
+            {
+                using (FileStream inputStream = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.None))
+                    return inputStream.Length > 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public static void PrintWord(string docPath, PrintJobModel printJob)
         {
             try
@@ -71,36 +86,74 @@ namespace HubLibrary
                 //String HeaderText = "# 028 9461";
                 String HeaderText = "# " + printJob.Id.ToString();
                 WdParagraphAlignment wdAlign = WdParagraphAlignment.wdAlignParagraphLeft;
-                AddFooterWord(word, HeaderText, wdAlign, document);
+                //AddFooterWord(word, HeaderText, wdAlign, document);
 
-                //System.Windows.Forms.MessageBox.Show("Just before word.Document.PrintOut()");
 
-                bool manualDuplexPrint = false;
-
-                switch (printJob.Print_Feature)
                 {
-                    case "SINGLESIDE":
-                        manualDuplexPrint = false;
-                        break;
+                    //System.Windows.Forms.MessageBox.Show("Just before word.Document.PrintOut()");
 
-                    case "DOUBLESIDE":
-                        manualDuplexPrint = true;
-                        break;
+               
+     //bool manualDuplexPrint = false;
 
-                    default:
-                        System.Windows.Forms.MessageBox.Show("In PrintDocument switch case: Default");
-                        break;
+                    //switch (printJob.Print_Feature)
+                    //{
+                    //    case "SINGLESIDE":
+                    //        manualDuplexPrint = false;
+                    //        break;
+
+                    //    case "DOUBLESIDE":
+                    //        manualDuplexPrint = true;
+                    //        break;
+
+                    //    default:
+                    //        System.Windows.Forms.MessageBox.Show("In PrintDocument switch case: Default");
+                    //        break;
+                    //}
+
                 }
 
-                document.PrintOut(Copies: printJob.Print_Copies, ManualDuplexPrint: manualDuplexPrint);
+
+                string tempDir = @"C:\ProgramData\Preasy\";
+                string tempDocumentPath = tempDir + printJob.Id.ToString() + @"w2pinterop.pdf";
+
+
+                try
+                {
+                    //document.SaveAs2(FileName: tempDocumentPath, FileFormat: WdSaveFormat.wdFormatPDF);
+                    document.SaveAs(FileName: tempDocumentPath, FileFormat: WdSaveFormat.wdFormatPDF);
+                    //System.Windows.Forms.MessageBox.Show("Saving as pdf");
+                    //document.ExportAsFixedFormat(OutputFileName: tempDocumentPath, ExportFormat: WdExportFormat.wdExportFormatPDF, OpenAfterExport: false, OptimizeFor: WdExportOptimizeFor.wdExportOptimizeForPrint);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Message: " + e.Message);
+                    System.Windows.Forms.MessageBox.Show(e.Message);
+                    //System.Windows.Forms.MessageBox.Show("Data: " + e.Data);
+                    //System.Windows.Forms.MessageBox.Show("InnerException: " + e.InnerException);
+                }
+
+                //document.PrintOut(OutputFileName: tempDocumentPath, PrintToFile: true);
                 object saveOption = WdSaveOptions.wdDoNotSaveChanges;
                 object originalFormat = WdOriginalFormat.wdOriginalDocumentFormat;
                 object routeDocument = false;
                 document.Close(ref saveOption, ref originalFormat, ref routeDocument);
-                //File.Delete(tempDocumentPath);
+
+                File.Delete(docPath);
+
+                int i = 0;
+                while (!IsFileReady(tempDocumentPath))
+                {
+                    Debug.WriteLine(i.ToString());
+                    i += 1;
+                }
+
+                PrintPdf(tempDocumentPath, printJob);
+
+                File.Delete(tempDocumentPath);
             }
             catch (Exception e)
             {
+                System.Windows.Forms.MessageBox.Show(e.Message);
                 Console.WriteLine("{0} Exception caught.", e);
                 //word.Quit();
             }
@@ -119,6 +172,11 @@ namespace HubLibrary
                 //System.Windows.Forms.MessageBox.Show("Just before PdfDocument.Load()");
 
                 docPath = PrintPdfHelper.PdfSharpSample(docPath, printJob.Id);
+
+                if (string.IsNullOrWhiteSpace(docPath))
+                {
+                    System.Windows.Forms.MessageBox.Show("Some error while adding footer to pdf ID:" + printJob.Id.ToString());
+                }
 
                 using (var document = PdfDocument.Load(docPath))
                 {
@@ -145,6 +203,8 @@ namespace HubLibrary
                         //System.Windows.Forms.MessageBox.Show("Just before printPdf.Print()");
                         printDocument.Print();
                         //System.Windows.Forms.MessageBox.Show("Just after printPdf.Print()");
+                        printDocument.Dispose();
+
                     }
                 }
             }
@@ -152,6 +212,17 @@ namespace HubLibrary
             {
                 System.Windows.Forms.MessageBox.Show(e.Message);
                 Debug.WriteLine(e.Message);
+            }
+
+            try
+            {
+                File.Delete(docPath);
+
+            }
+            catch (Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+                Console.WriteLine("{0} Exception caught.", e);
             }
         }
 

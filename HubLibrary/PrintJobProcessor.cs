@@ -42,8 +42,12 @@ namespace HubLibrary
         }
 
 
-        public static async Task<string> GetDocument(string documentUrl, string documentType)
+        public static async Task<string> GetDocument(PrintJobModel printJob)
         {
+
+            string documentUrl = printJob.Docfile;
+            string documentType = printJob.DocType;
+
             string url = documentUrl;
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
@@ -57,7 +61,7 @@ namespace HubLibrary
 
                     //string tempDocumentPath = @"I:\pc app\PrintHub\tmp_document\tempdoc" + documentType;
                     string tempDir = @"C:\ProgramData\Preasy\";
-                    string tempDocumentPath = tempDir + @"tempdoc" + documentType;
+                    string tempDocumentPath = tempDir + printJob.Id.ToString() + @"tempdoc" + documentType;
 
                     System.IO.Directory.CreateDirectory(tempDir);
 
@@ -136,7 +140,7 @@ namespace HubLibrary
                         printJob = printJobQueue.Dequeue();
 
                         progress.Report(printJobQueue);
-                        string tempDocumentPath = await GetDocument(printJob.Docfile, printJob.DocType);
+                        string tempDocumentPath = await GetDocument(printJob);
                         
                         //string tempDocumentPath = @"C:\Program Files\Preasy\PrintHub\print.docx";
 
@@ -188,7 +192,7 @@ namespace HubLibrary
         public static async Task PrintOneFile(PrintJobModel printJob, IProgress<Queue<PrintJobModel>> progress)
         {
             OngoingPrintJobRequests += 1;
-            string tempDocumentPath = await GetDocument(printJob.Docfile, printJob.DocType);
+            string tempDocumentPath = await GetDocument(printJob);
 
             try
             {
