@@ -12,27 +12,18 @@ using System.Windows.Forms;
 
 namespace PHDesktopUI
 {
-    public partial class SingupForm : Form
+    public partial class SignupForm : Form
     {
-        public SingupForm()
+        public SignupForm()
         {
             InitializeComponent();
+            BringToFront();
             ApiHelper.InitializeClient();
-        }
-
-        private void buttonSingup_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void textBoxPassword_TextChanged(object sender, EventArgs e)
         {
             textBoxPassword.PasswordChar = '*';
-        }
-
-        private void textBoxCnfPassword_TextChanged(object sender, EventArgs e)
-        {
-            textBoxCnfPassword.PasswordChar = '*';
         }
 
         private void textBoxName_Click(object sender, EventArgs e)
@@ -59,11 +50,11 @@ namespace PHDesktopUI
             }
         }
 
-        private void textBoxCnfPassword_Click(object sender, EventArgs e)
+        private void textBoxPhone_Click(object sender, EventArgs e)
         {
-            if (textBoxCnfPassword.Text == "Confirm Password")
+            if (textBoxPhone.Text == "Phone number")
             {
-                textBoxCnfPassword.Clear();
+                textBoxPhone.Clear();
             }
         }
 
@@ -82,6 +73,7 @@ namespace PHDesktopUI
                 textBoxName.Text = "Email";
             }
         }
+
         private void textBoxPassword_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBoxPassword.Text))
@@ -89,19 +81,26 @@ namespace PHDesktopUI
                 textBoxName.Text = "Password";
             }
         }
-        private void textBoxCnfPassword_Leave(object sender, EventArgs e)
+
+        private void textBoxPhone_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBoxCnfPassword.Text))
+            if (string.IsNullOrWhiteSpace(textBoxPhone.Text))
             {
-                textBoxCnfPassword.Text = "Confirm Password";
+                textBoxPhone.Text = "Phone number";
             }
         }
 
-        private void buttonSingup_Click_1(object sender, EventArgs e)
+        private void buttonSingup_Click(object sender, EventArgs e)
         {
+            //textBoxName.Text = "Shop8";
+            //textBoxPhone.Text = "0123456879";
+            //textBoxEmail.Text = "shop8@asdf.com";
+            //textBoxPassword.Text = "asdf";
+
             object data = new
             {
-                name = textBoxName.Text,
+                student_name = textBoxName.Text,
+                phone = textBoxPhone.Text,
                 email = textBoxEmail.Text,
                 password = textBoxPassword.Text
             };
@@ -111,7 +110,7 @@ namespace PHDesktopUI
 
         private async Task SingupAsync(object data)
         {
-            string token = await LoginHelper.Login(data);
+            string token = await LoginHelper.Singup(data);
 
             if (!string.IsNullOrWhiteSpace(token))
             {
@@ -119,10 +118,8 @@ namespace PHDesktopUI
                 Properties.Settings.Default.accessToken = token;
                 Properties.Settings.Default.Save();
 
-                (new PrintHubForm()).Show();
-                //var t = new Thread(() => Application.Run(new PrintHubForm()));
-                //t.Start();
-                //this.Hide();
+                var t = new Thread(() => Application.Run(new PrintHubForm()));
+                t.Start();
                 this.Close();
             }
             else
@@ -135,7 +132,8 @@ namespace PHDesktopUI
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            (new LoginForm()).Show();
+            var t = new Thread(() => Application.Run(new LoginForm()));
+            t.Start();
             this.Close();
         }
     }

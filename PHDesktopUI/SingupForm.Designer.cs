@@ -1,6 +1,6 @@
 ﻿namespace PHDesktopUI
 {
-    partial class SingupForm
+    partial class SignupForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SingupForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignupForm));
             this.buttonSingup = new System.Windows.Forms.Button();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,7 +40,7 @@
             this.labelOr = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonLogin = new System.Windows.Forms.Button();
-            this.textBoxCnfPassword = new System.Windows.Forms.TextBox();
+            this.textBoxPhone = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonSingup
@@ -56,14 +56,14 @@
             this.buttonSingup.TabIndex = 21;
             this.buttonSingup.Text = "SING UP";
             this.buttonSingup.UseVisualStyleBackColor = false;
-            this.buttonSingup.Click += new System.EventHandler(this.buttonSingup_Click_1);
+            this.buttonSingup.Click += new System.EventHandler(this.buttonSingup_Click);
             // 
             // textBoxPassword
             // 
             this.textBoxPassword.BackColor = System.Drawing.Color.DimGray;
             this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxPassword.ForeColor = System.Drawing.Color.White;
-            this.textBoxPassword.Location = new System.Drawing.Point(27, 217);
+            this.textBoxPassword.Location = new System.Drawing.Point(27, 254);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(306, 27);
             this.textBoxPassword.TabIndex = 20;
@@ -180,32 +180,31 @@
             this.buttonLogin.UseVisualStyleBackColor = false;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
-            // textBoxCnfPassword
+            // textBoxPhone
             // 
-            this.textBoxCnfPassword.BackColor = System.Drawing.Color.DimGray;
-            this.textBoxCnfPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxCnfPassword.ForeColor = System.Drawing.Color.White;
-            this.textBoxCnfPassword.Location = new System.Drawing.Point(27, 254);
-            this.textBoxCnfPassword.Name = "textBoxCnfPassword";
-            this.textBoxCnfPassword.Size = new System.Drawing.Size(306, 27);
-            this.textBoxCnfPassword.TabIndex = 20;
-            this.textBoxCnfPassword.Text = "Confirm Password";
-            this.textBoxCnfPassword.Click += new System.EventHandler(this.textBoxCnfPassword_Click);
-            this.textBoxCnfPassword.TextChanged += new System.EventHandler(this.textBoxCnfPassword_TextChanged);
-            this.textBoxCnfPassword.Leave += new System.EventHandler(this.textBoxCnfPassword_Leave);
+            this.textBoxPhone.BackColor = System.Drawing.Color.DimGray;
+            this.textBoxPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxPhone.ForeColor = System.Drawing.Color.White;
+            this.textBoxPhone.Location = new System.Drawing.Point(27, 217);
+            this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.Size = new System.Drawing.Size(306, 27);
+            this.textBoxPhone.TabIndex = 27;
+            this.textBoxPhone.Text = "Phone number";
+            this.textBoxPhone.Click += new System.EventHandler(this.textBoxPhone_Click);
+            this.textBoxPhone.Leave += new System.EventHandler(this.textBoxPhone_Leave);
             // 
-            // SingupForm
+            // SignupForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(29)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(360, 488);
+            this.Controls.Add(this.textBoxPhone);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelOr);
             this.Controls.Add(this.buttonSingup);
-            this.Controls.Add(this.textBoxCnfPassword);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxName);
@@ -214,7 +213,7 @@
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "SingupForm";
+            this.Name = "SignupForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Preasy";
             this.ResumeLayout(false);
@@ -235,6 +234,6 @@
         private System.Windows.Forms.Label labelOr;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonLogin;
-        private System.Windows.Forms.TextBox textBoxCnfPassword;
+        private System.Windows.Forms.TextBox textBoxPhone;
     }
 }

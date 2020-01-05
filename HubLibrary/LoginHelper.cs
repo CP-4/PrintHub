@@ -79,7 +79,7 @@ namespace HubLibrary
                     //token = "Auth failed";
                     MessageBox.Show("Incorrect credentials.\n" + response.ReasonPhrase);
                 }
-                else if (response.StatusCode == HttpStatusCode.OK)
+                else if (response.StatusCode == HttpStatusCode.Created)
                 {
                     string res = await response.Content.ReadAsStringAsync();
                     Token tok = JsonConvert.DeserializeObject<Token>(res);

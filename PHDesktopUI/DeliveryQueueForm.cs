@@ -81,7 +81,7 @@ namespace PHDesktopUI
             //refreshDeliveryJobQueue();
             //refreshPrintJobQueue(PrintJobQueue);
 
-            //checkLoggedInAsync();
+            checkLoggedInAsync();
 
             printQueueControl1.BringToFront();
         }
@@ -334,16 +334,16 @@ namespace PHDesktopUI
         {
             if (PrintJobProcessor.PausePrint)
             {
-                panelPrintPause.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(36)))), ((int)(((byte)(40)))));
-                buttonPrintPause.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(18)))), ((int)(((byte)(20)))));
+                panelPrintPause.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(200)))), ((int)(((byte)(84)))));
+                buttonPrintPause.BackColor =  System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(140)))), ((int)(((byte)(80)))));
                 buttonPrintPause.Image = global::PHDesktopUI.Properties.Resources.pause_24;
                 PrintJobProcessor.PausePrint = false;
                 buttonPrintPause.Text = "   Auto accept: ON";
             }
             else
             {
-                panelPrintPause.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(200)))), ((int)(((byte)(84)))));
-                buttonPrintPause.BackColor =  System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(140)))), ((int)(((byte)(80)))));
+                panelPrintPause.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(36)))), ((int)(((byte)(40)))));
+                buttonPrintPause.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(18)))), ((int)(((byte)(20)))));
                 this.buttonPrintPause.Image = global::PHDesktopUI.Properties.Resources.play_7_24;
                 PrintJobProcessor.PausePrint = true;
                 buttonPrintPause.Text = "   Auto accept: OFF";
@@ -388,5 +388,12 @@ namespace PHDesktopUI
         {
             //this.WindowState = FormWindowState.Maximized;
         }
+
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            settingsControl1.LoadSettingsFieldAsync();
+            settingsControl1.BringToFront();
+        }
+        
     }
 }

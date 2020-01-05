@@ -43,5 +43,17 @@ namespace PHDesktopUI.Properties {
                 this["accessToken"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string shopId {
+            get {
+                return ((string)(this["shopId"]));
+            }
+            set {
+                this["shopId"] = value;
+            }
+        }
     }
 }

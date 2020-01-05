@@ -25,8 +25,8 @@ namespace PHDesktopUI
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            textBoxEmail.Text = "user8@asdf.com";
-            textBoxPassword.Text = "asdf";
+            //textBoxEmail.Text = "shop7@asdf.com";
+            //textBoxPassword.Text = "asdf";
 
             object data = new
             {
@@ -47,10 +47,8 @@ namespace PHDesktopUI
                 Properties.Settings.Default.accessToken = token;
                 Properties.Settings.Default.Save();
 
-                (new PrintHubForm()).Show();
-                //var t = new Thread(() => Application.Run(new PrintHubForm()));
-                //t.Start();
-                //this.Hide();
+                var t = new Thread(() => Application.Run(new PrintHubForm()));
+                t.Start();
                 this.Close();
             }
             else
@@ -62,7 +60,8 @@ namespace PHDesktopUI
 
         private void buttonSingup_Click(object sender, EventArgs e)
         {
-            (new SingupForm()).Show();
+            var t = new Thread(() => Application.Run(new SignupForm()));
+            t.Start();
             this.Close();
         }
         
