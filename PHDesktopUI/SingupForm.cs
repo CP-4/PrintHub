@@ -70,7 +70,7 @@ namespace PHDesktopUI
         {
             if (string.IsNullOrWhiteSpace(textBoxEmail.Text))
             {
-                textBoxName.Text = "Email";
+                textBoxEmail.Text = "Email";
             }
         }
 
@@ -78,7 +78,7 @@ namespace PHDesktopUI
         {
             if (string.IsNullOrWhiteSpace(textBoxPassword.Text))
             {
-                textBoxName.Text = "Password";
+                textBoxPassword.Text = "Password";
             }
         }
 
