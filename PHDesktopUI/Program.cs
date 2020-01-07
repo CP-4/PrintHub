@@ -26,7 +26,7 @@ namespace PHDesktopUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //GlobalConfig.ApiHost = Properties.Settings.Default.serverAddress;
+            GlobalConfig.ApiHost = Properties.Settings.Default.serverAddress;
 
             Application.ApplicationExit += new EventHandler(OnApplicationExit);
 

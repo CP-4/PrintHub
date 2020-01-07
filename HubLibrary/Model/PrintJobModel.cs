@@ -17,6 +17,7 @@ namespace HubLibrary.Model
         public int Pages { get; set; }
         public string Print_Feature { get; set; }
         public int Print_Copies { get; set; }
+        public float Print_cost { get; set; }
 
         //public string JobId { get; set; }
         //public string ShopId { get; set; }

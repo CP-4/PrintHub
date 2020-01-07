@@ -75,5 +75,33 @@ namespace HubLibrary
                 return shop;
             }
         }
+
+        public static async Task<ShopModel> FetchShopFromUserAsync()
+        {
+            ShopModel shop = new ShopModel();
+
+            string url = GlobalConfig.ApiHost + "/file2/shops/getshopfromuser/";
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
+            {
+                //Debug.WriteLine(response.StatusCode);
+
+                if (response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    //token = "Auth failed";
+                    MessageBox.Show("Login again.\n" + response.ReasonPhrase);
+                }
+                else if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    shop = await response.Content.ReadAsAsync<ShopModel>();
+                }
+                else
+                {
+                    MessageBox.Show(response.ReasonPhrase);
+                }
+
+                return shop;
+            }
+        }
     }
 }

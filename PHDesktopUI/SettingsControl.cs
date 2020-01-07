@@ -15,7 +15,7 @@ namespace PHDesktopUI
 {
     public partial class SettingsControl : UserControl
     {
-        string Id = Properties.Settings.Default.shopId;        
+        string Id = Properties.Settings.Default.shopId;
 
         public SettingsControl()
         {
@@ -26,6 +26,8 @@ namespace PHDesktopUI
 
         public async Task LoadSettingsFieldAsync()
         {
+            Id = Properties.Settings.Default.shopId;
+
             if (!string.IsNullOrWhiteSpace(Id))
             {
                 ShopModel shop = await SettingsHelper.FetchShopDetailsAsync(Id);

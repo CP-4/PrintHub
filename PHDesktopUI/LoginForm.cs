@@ -46,7 +46,7 @@ namespace PHDesktopUI
                 ApiHelper.InitializeClient(token);
                 Properties.Settings.Default.accessToken = token;
                 Properties.Settings.Default.Save();
-
+                
                 var t = new Thread(() => Application.Run(new PrintHubForm()));
                 t.Start();
                 this.Close();
